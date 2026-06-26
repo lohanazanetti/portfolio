@@ -74,8 +74,8 @@
             gap: 10px;
         }
         .nav-logo img {
-            width: 32px;
-            height: 32px;
+            width: 48px;
+            height: 48px;
             object-fit: contain;
         }
         .nav-logo-text {
@@ -105,7 +105,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 110px 24px 60px;
+            padding: 78px 24px 36px;
             text-align: center;
             background: var(--bg);
         }
@@ -140,7 +140,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 32%;
+            object-position: center 58%;
         }
         .hero-photo::before {
             content: '';
@@ -152,6 +152,18 @@
                 transparent 80%,
                 var(--bg) 100%);
             z-index: 2;
+            pointer-events: none;
+        }
+        .hero-logo-accent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
+            z-index: 3;
+            filter: drop-shadow(0 2px 12px rgba(31,8,34,0.6));
             pointer-events: none;
         }
         .hero-brand {
@@ -220,7 +232,7 @@
 
         /* ═══════ INTRO ═══════ */
         .intro {
-            padding: 90px 24px;
+            padding: 48px 24px;
             background: var(--bg);
             display: flex;
             flex-direction: column;
@@ -276,7 +288,7 @@
         .tag:hover { background: var(--accent15); border-color: var(--accent); }
 
         /* ═══════ PROJECTS ═══════ */
-        .projects { padding: 80px 0; background: var(--bg); }
+        .projects { padding: 48px 0; background: var(--bg); }
         .projects-head { padding: 0 24px; margin-bottom: 70px; }
         .section-title {
             font-family: var(--display);
@@ -355,6 +367,9 @@
             flex-shrink: 0;
             scroll-snap-align: start;
             width: 300px;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 16px;
         }
         .ig-slide .instagram-media {
             min-width: unset !important;
@@ -406,7 +421,7 @@
         }
 
         /* ═══════ WEBSITES SECTION ═══════ */
-        .websites { padding: 90px 24px; background: var(--bg); }
+        .websites { padding: 48px 24px; background: var(--bg); }
         .web-grid {
             display: flex;
             flex-direction: column;
@@ -477,7 +492,7 @@
             opacity: 0.85;
         }
         .about-inner {
-            padding: 80px 24px;
+            padding: 48px 24px;
             max-width: 640px;
             margin: 0 auto;
         }
@@ -523,21 +538,18 @@
             margin: 48px auto 0;
             background: linear-gradient(180deg, var(--bg-2), var(--bg-3));
             border-radius: 160px 160px 12px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
             border: 1px solid var(--accent10);
         }
-        .about-photo-label {
-            font-size: 0.6rem;
-            color: var(--t3);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* ═══════ CONTACT ═══════ */
         .contact {
-            padding: 110px 24px;
+            padding: 48px 24px;
             background: var(--bg);
             display: flex;
             flex-direction: column;
@@ -630,18 +642,18 @@
         /* ═══════ DESKTOP ═══════ */
         @media (min-width: 768px) {
             nav { padding: 18px 48px; }
-            .hero { padding: 120px 48px 70px; }
+            .hero { padding: 96px 48px 50px; }
             .hero-photo { height: 170px; max-width: 680px; }
-            .intro { padding: 120px 48px; }
+            .intro { padding: 80px 48px; }
             .projects-head { padding: 0 48px; }
             .project-head { padding: 0 48px; }
             .ig-carousel { padding: 4px 48px 16px; }
             .ig-slide { width: 340px; }
             .ig-slide .instagram-media { max-width: 340px !important; }
             .img-carousel { padding: 4px 48px 16px; }
-            .websites { padding: 120px 48px; }
-            .about-inner { padding: 100px 48px; }
-            .contact { padding: 130px 48px; }
+            .websites { padding: 80px 48px; }
+            .about-inner { padding: 80px 48px; }
+            .contact { padding: 80px 48px; }
             .contact-links { flex-direction: row; gap: 16px; }
             .web-grid { flex-direction: row; flex-wrap: wrap; max-width: 800px; }
             .web-card { flex: 1; min-width: 260px; }
@@ -676,6 +688,7 @@
     <h1 class="hero-name">Lohana</h1>
     <div class="hero-photo">
         <img src="hero.png" alt="Lohana Zanetti">
+        <img src="logo.png" alt="" class="hero-logo-accent">
     </div>
     <h1 class="hero-name">Zanetti</h1>
     <p class="hero-brand">Creator Mobile</p>
@@ -735,10 +748,39 @@
         <p class="section-sub">Design de feed · Reels · Identidade visual · Cobertura de eventos</p>
     </div>
 
-    <!-- ─── FOCCUS ─── -->
+    <!-- ─── DOLCE DONUT ─── -->
     <div class="project reveal">
         <div class="project-head">
             <p class="project-number">01</p>
+            <h3 class="project-name">Dolce Donut</h3>
+            <p class="project-desc">Uma marca que vende pela estética merece conteúdo à altura. Captação fotográfica, filmagem, edição e estratégia integradas para despertar desejo e transformar visualizações em vendas reais.</p>
+            <div class="project-tags">
+                <span class="project-tag">Social Media</span>
+                <span class="project-tag">Fotografia</span>
+                <span class="project-tag">Filmagem</span>
+                <span class="project-tag">Design</span>
+                <span class="project-tag">Edição</span>
+            </div>
+        </div>
+        <div class="ig-carousel">
+            <div class="ig-track">
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYiSiJFjs/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYvzcp7aw/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZCE6p5ZS/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZT77p2zt/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZi2gpoDd/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZyzsJi2P/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCaElAp6Md/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DX9W44PB0PD/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYWjfpJRX/" data-instgrm-version="14"></blockquote></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── FOCCUS ─── -->
+    <div class="project reveal">
+        <div class="project-head">
+            <p class="project-number">02</p>
             <h3 class="project-name">FOCCUS Sport Fitness</h3>
             <p class="project-desc">Uma academia cheia de diferenciais que chegou até mim pouco comunicada. Juntas, reestruturamos a forma de mostrar esses benefícios: direção criativa, design de feed e produção de vídeo alinhados à identidade e aos objetivos dos proprietários. O resultado é uma marca que agora ocupa o espaço que sempre mereceu.</p>
             <div class="project-tags">
@@ -760,35 +802,6 @@
         </div>
     </div>
 
-    <!-- ─── DOLCE DONUT ─── -->
-    <div class="project reveal">
-        <div class="project-head">
-            <p class="project-number">02</p>
-            <h3 class="project-name">Dolce Donut</h3>
-            <p class="project-desc">Uma marca que vende pela estética merece conteúdo à altura. Captação fotográfica, filmagem, edição e estratégia integradas para despertar desejo e transformar visualizações em vendas reais.</p>
-            <div class="project-tags">
-                <span class="project-tag">Social Media</span>
-                <span class="project-tag">Fotografia</span>
-                <span class="project-tag">Filmagem</span>
-                <span class="project-tag">Design</span>
-                <span class="project-tag">Edição</span>
-            </div>
-        </div>
-        <div class="ig-carousel">
-            <div class="ig-track">
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DX9W44PB0PD/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYWjfpJRX/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYiSiJFjs/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYvzcp7aw/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZCE6p5ZS/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZT77p2zt/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZi2gpoDd/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZyzsJi2P/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCaElAp6Md/" data-instgrm-version="14"></blockquote></div>
-            </div>
-        </div>
-    </div>
-
     <!-- ─── FARMÁCIA DESCONTO FÁCIL ─── -->
     <div class="project reveal">
         <div class="project-head">
@@ -806,10 +819,10 @@
         <div class="ig-carousel">
             <div class="ig-track">
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZaJCdcuMdK/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZXg1PyjjOT/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXjwNw1jhhM/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU0buClDU6e/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DRQQtsOkms5/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXjwNw1jhhM/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZXg1PyjjOT/" data-instgrm-version="14"></blockquote></div>
             </div>
         </div>
     </div>
@@ -896,7 +909,6 @@
         </div>
         <div class="ig-carousel">
             <div class="ig-track">
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQSAyAxESZX/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DNqPxvWt_G4/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZI6Q_XxafX/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSP3tT_FeOf/" data-instgrm-version="14"></blockquote></div>
@@ -918,7 +930,7 @@
         <div class="web-card">
             <p class="web-card-title">Dolce Donut · Biosite</p>
             <p class="web-card-desc">Bio link completo criado do zero com identidade visual da marca, links organizados e WhatsApp integrado.</p>
-            <a href="https://lohanazanetti.github.io/bio.site.dolce.dout" target="_blank" class="web-card-link">
+            <a href="https://dolcedonut.github.io" target="_blank" class="web-card-link">
                 ver projeto <span>→</span>
             </a>
         </div>
@@ -980,7 +992,7 @@
             voluntária · crioulo haitiano
         </div>
         <div class="about-photo">
-            <span class="about-photo-label">foto pessoal</span>
+            <img src="foto-sobre.png" alt="Lohana Zanetti">
         </div>
     </div>
 </section>
