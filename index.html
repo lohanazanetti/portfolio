@@ -99,13 +99,12 @@
 
         /* ═══════ HERO ═══════ */
         .hero {
-            min-height: 100vh;
-            min-height: 100dvh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 124px 24px 36px;
+            padding: 124px 24px 16px;
             text-align: center;
             background: var(--bg);
         }
@@ -160,7 +159,7 @@
             width: 180px;
             height: 180px;
             object-fit: contain;
-            margin-top: 48px;
+            margin-top: 16px;
             opacity: 0.95;
         }
         .hero-brand {
@@ -266,6 +265,9 @@
         /* ═══════ PROJECTS ═══════ */
         .projects { padding: 48px 0; background: var(--bg); }
         .projects-head { padding: 0 24px; margin-bottom: 70px; }
+        @media (max-width: 767px) {
+            .projects-head { margin-bottom: 40px; }
+        }
         .section-title {
             font-family: var(--display);
             font-size: clamp(2rem, 7vw, 4rem);
@@ -288,6 +290,9 @@
         /* project block */
         .project { margin-bottom: 110px; }
         .project:last-child { margin-bottom: 0; }
+        @media (max-width: 767px) {
+            .project { margin-bottom: 56px; }
+        }
         .project-head { padding: 0 24px; margin-bottom: 32px; }
         .project-number {
             font-family: var(--display);
@@ -365,9 +370,9 @@
         /* mobile: crop top (profile/"ver perfil") and bottom (ver mais/curtidas/comentários/campo) bars */
         @media (max-width: 767px) {
             .ig-slide .instagram-media {
-                margin-top: -62px !important;
-                margin-bottom: -150px !important;
-                height: calc(100% + 212px) !important;
+                margin-top: -46px !important;
+                margin-bottom: -230px !important;
+                height: calc(100% + 276px) !important;
             }
         }
 
@@ -414,6 +419,27 @@
             object-fit: cover;
         }
         .img-slide .cz-img { height: 340px; width: auto; }
+
+        /* ═══════ CAROUSEL DOTS (swipe indicator) ═══════ */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 2px;
+            margin-bottom: 8px;
+        }
+        .carousel-dots .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--t3);
+            opacity: 0.4;
+            transition: opacity 0.3s, background 0.3s;
+        }
+        .carousel-dots .dot.active {
+            background: var(--accent);
+            opacity: 1;
+        }
 
         /* ═══════ WEBSITES SECTION ═══════ */
         .websites { padding: 48px 24px; background: var(--bg); }
@@ -576,6 +602,12 @@
             margin-bottom: 40px;
             opacity: 0.9;
         }
+        @media (max-width: 767px) {
+            .about-inner { padding-bottom: 20px; }
+            .contact { padding-top: 16px; }
+            .contact-logo { margin-bottom: 8px; }
+            .contact-title { margin-bottom: 16px; }
+        }
         .contact-title {
             font-family: var(--display);
             font-size: clamp(2rem, 7vw, 3.5rem);
@@ -641,6 +673,15 @@
             text-transform: uppercase;
         }
 
+        /* ═══════ MOBILE TEXT WRAPPING ═══════ */
+        @media (max-width: 767px) {
+            .intro-text, .intro-headline, .project-desc, .about-text, .contact-text,
+            .web-card-desc, .section-sub, .contact-title, .about-title, .section-title,
+            .project-name, .web-card-title {
+                text-wrap: pretty;
+            }
+        }
+
         /* ═══════ REVEAL ═══════ */
         .reveal {
             opacity: 0;
@@ -678,6 +719,7 @@
             .img-slide .cz-img { width: auto; height: 320px; max-width: none; }
             .img-slide.landscape img { height: 420px; width: 746px; }
             .eq-sharpen { filter: url(#sharpen); }
+            .carousel-dots { display: none; }
             .websites { padding: 80px 48px; }
             .about-inner { padding: 80px 48px 24px; }
             .contact { padding: 20px 48px 80px; }
@@ -764,7 +806,7 @@
     <p class="section-label reveal">sobre a creator mobile</p>
     <p class="intro-headline reveal">Do planejamento ao publish,<br>tudo pensado como um único&nbsp;processo.</p>
     <p class="intro-text reveal">
-        Estratégia, captação, fotografia, filmagem, edição e design integrados do conceito à entrega. Cada peça construída com intenção. Cada marca tratada como única.
+        Estratégia, captação, fotografia, filmagem, edição e design integrados do conceito à entrega. Cada peça construída com intenção. Cada marca tratada como&nbsp;única.
     </p>
     <div class="tags reveal">
         <span class="tag">Execução completa</span>
@@ -893,7 +935,7 @@
                 <span class="project-tag">Design</span>
             </div>
         </div>
-        <div class="img-carousel">
+        <div class="img-carousel" id="eq-carousel">
             <div class="img-track">
                 <div class="img-slide landscape"><img src="eq-logo.png" alt="Studio Equilíbrio - Logo"></div>
                 <div class="img-slide landscape"><img src="eq-paleta.png" alt="Studio Equilíbrio - Paleta de cores"></div>
@@ -901,6 +943,13 @@
                 <div class="img-slide landscape"><img src="eq-catalogo.png" alt="Studio Equilíbrio - Catálogo"></div>
                 <div class="img-slide landscape"><img src="eq-identidade.png" alt="Studio Equilíbrio - Identidade aplicada" class="eq-sharpen"></div>
             </div>
+        </div>
+        <div class="carousel-dots" data-dots-for="eq-carousel">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
     </div>
 
@@ -1064,6 +1113,20 @@
     // Re-process Instagram embeds after fonts/scripts load
     window.addEventListener('load', () => {
         if (window.instgrm) window.instgrm.Embeds.process();
+    });
+
+    // Swipe indicator dots (Studio Equilíbrio carousel)
+    document.querySelectorAll('.carousel-dots[data-dots-for]').forEach(dotsEl => {
+        const carousel = document.getElementById(dotsEl.dataset.dotsFor);
+        if (!carousel) return;
+        const slides = carousel.querySelectorAll('.img-slide');
+        const dots = dotsEl.querySelectorAll('.dot');
+        carousel.addEventListener('scroll', () => {
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            const ratio = maxScroll > 0 ? carousel.scrollLeft / maxScroll : 0;
+            const idx = Math.round(ratio * (slides.length - 1));
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        });
     });
 
     // Drag to scroll on desktop
