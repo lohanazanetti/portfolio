@@ -74,8 +74,8 @@
             gap: 10px;
         }
         .nav-logo img {
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
             object-fit: contain;
         }
         .nav-logo-text {
@@ -155,16 +155,10 @@
             pointer-events: none;
         }
         .hero-logo-accent {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 56px;
-            height: 56px;
+            width: 44px;
+            height: 44px;
             object-fit: contain;
-            z-index: 3;
-            filter: drop-shadow(0 2px 12px rgba(31,8,34,0.6));
-            pointer-events: none;
+            margin-top: 24px;
         }
         .hero-brand {
             font-family: var(--caps);
@@ -412,6 +406,9 @@
             height: 340px;
             width: auto;
             object-fit: cover;
+            -webkit-user-drag: none;
+            user-select: none;
+            pointer-events: none;
         }
         /* landscape images (16:9) */
         .img-slide.landscape img {
@@ -557,11 +554,11 @@
             text-align: center;
         }
         .contact-logo {
-            width: 64px;
-            height: 64px;
+            width: 96px;
+            height: 96px;
             object-fit: contain;
             margin-bottom: 40px;
-            opacity: 0.7;
+            opacity: 0.85;
         }
         .contact-title {
             font-family: var(--display);
@@ -647,10 +644,16 @@
             .intro { padding: 80px 48px; }
             .projects-head { padding: 0 48px; }
             .project-head { padding: 0 48px; }
-            .ig-carousel { padding: 4px 48px 16px; }
+            .ig-carousel { padding: 4px 48px 20px; scrollbar-width: thin; }
+            .ig-carousel::-webkit-scrollbar { display: block; height: 6px; }
+            .ig-carousel::-webkit-scrollbar-track { background: var(--accent08); border-radius: 3px; }
+            .ig-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
             .ig-slide { width: 340px; }
             .ig-slide .instagram-media { max-width: 340px !important; }
-            .img-carousel { padding: 4px 48px 16px; }
+            .img-carousel { padding: 4px 48px 20px; scrollbar-width: thin; }
+            .img-carousel::-webkit-scrollbar { display: block; height: 6px; }
+            .img-carousel::-webkit-scrollbar-track { background: var(--accent08); border-radius: 3px; }
+            .img-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
             .websites { padding: 80px 48px; }
             .about-inner { padding: 80px 48px; }
             .contact { padding: 80px 48px; }
@@ -687,11 +690,11 @@
     <p class="hero-eyebrow">Social Media · Design · Criação</p>
     <h1 class="hero-name">Lohana</h1>
     <div class="hero-photo">
-        <img src="hero.png" alt="Lohana Zanetti">
-        <img src="logo.png" alt="" class="hero-logo-accent">
+        <img src="foto-oculos.png.png" alt="Lohana Zanetti">
     </div>
     <h1 class="hero-name">Zanetti</h1>
     <p class="hero-brand">Creator Mobile</p>
+    <img src="logo.png" alt="Logo Lohana Zanetti" class="hero-logo-accent">
     <div class="hero-scroll">
         <div class="hero-scroll-line"></div>
         <span>scroll</span>
@@ -992,7 +995,7 @@
             voluntária · crioulo haitiano
         </div>
         <div class="about-photo">
-            <img src="foto-sobre.png" alt="Lohana Zanetti">
+            <img src="foto-sobre.png.png" alt="Lohana Zanetti">
         </div>
     </div>
 </section>
