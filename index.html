@@ -413,7 +413,7 @@
             width: 390px;
             object-fit: cover;
         }
-        .cz-img { height: 340px; width: auto; }
+        .img-slide .cz-img { height: 340px; width: auto; }
 
         /* ═══════ WEBSITES SECTION ═══════ */
         .websites { padding: 48px 24px; background: var(--bg); }
@@ -652,10 +652,10 @@
         /* ═══════ DESKTOP ═══════ */
         @media (min-width: 768px) {
             nav { padding: 18px 48px; }
-            .hero { padding: 150px 48px 50px; }
+            .hero { min-height: auto; padding: 150px 48px 70px; }
             .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.3em; padding: 0 24px; }
             .hero-photo { height: 170px; max-width: 680px; }
-            .hero-logo-accent { width: 220px; height: 220px; }
+            .hero-logo-accent { width: 220px; height: 220px; margin-top: 24px; }
             .intro { padding: 80px 48px; }
             .projects-head { padding: 0 48px; }
             .project-head { padding: 0 48px; }
@@ -666,19 +666,21 @@
             .ig-slide { width: 340px; }
             .ig-slide .instagram-media {
                 max-width: 340px !important;
-                margin-top: -62px !important;
-                margin-bottom: -90px !important;
-                height: calc(100% + 152px) !important;
+                margin-top: -20px !important;
+                margin-bottom: -170px !important;
+                height: calc(100% + 190px) !important;
             }
             .img-carousel { padding: 4px 48px 20px; scrollbar-width: thin; }
             .img-carousel::-webkit-scrollbar { display: block; height: 6px; }
             .img-carousel::-webkit-scrollbar-track { background: var(--accent08); border-radius: 3px; }
             .img-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
-            .cz-img { height: 520px; }
+            .img-slide .cz-img { width: calc(100vw - 200px); max-width: 560px; height: auto; }
+            .img-slide.landscape img { height: 420px; width: 746px; }
             .websites { padding: 80px 48px; }
             .about-inner { padding: 80px 48px; }
             .contact { padding: 80px 48px; }
-            .contact-links { flex-direction: row; gap: 16px; }
+            .contact-logo { width: 768px; height: 768px; margin-bottom: 16px; }
+            .contact-links { flex-direction: row; justify-content: center; gap: 16px; }
             .web-grid { flex-direction: row; flex-wrap: wrap; max-width: 800px; }
             .web-card { flex: 1; min-width: 260px; }
         }
@@ -688,6 +690,8 @@
             .hero-logo-accent { width: 260px; height: 260px; }
             .ig-slide { width: 360px; }
             .ig-slide .instagram-media { max-width: 360px !important; }
+            .img-slide .cz-img { max-width: 680px; }
+            .img-slide.landscape img { height: 480px; width: 853px; }
             .project { margin-bottom: 140px; }
         }
     </style>
@@ -873,7 +877,7 @@
     <div class="project reveal">
         <div class="project-head">
             <p class="project-number">05</p>
-            <h3 class="project-name">Estúdio Equilíbrio</h3>
+            <h3 class="project-name">Studio Equilíbrio</h3>
             <p class="project-desc">Identidade visual e conteúdo para um estúdio que respira equilíbrio entre corpo e mente. Da construção da marca ao design de feed aplicado.</p>
             <div class="project-tags">
                 <span class="project-tag">Identidade Visual</span>
@@ -883,11 +887,11 @@
         </div>
         <div class="img-carousel">
             <div class="img-track">
-                <div class="img-slide landscape"><img src="eq-logo.png" alt="Estúdio Equilíbrio - Logo"></div>
-                <div class="img-slide landscape"><img src="eq-paleta.png" alt="Estúdio Equilíbrio - Paleta de cores"></div>
-                <div class="img-slide landscape"><img src="eq-posts.png" alt="Estúdio Equilíbrio - Posts aplicados"></div>
-                <div class="img-slide landscape"><img src="eq-catalogo.png" alt="Estúdio Equilíbrio - Catálogo"></div>
-                <div class="img-slide landscape"><img src="eq-identidade.png" alt="Estúdio Equilíbrio - Identidade aplicada"></div>
+                <div class="img-slide landscape"><img src="eq-logo.png" alt="Studio Equilíbrio - Logo"></div>
+                <div class="img-slide landscape"><img src="eq-paleta.png" alt="Studio Equilíbrio - Paleta de cores"></div>
+                <div class="img-slide landscape"><img src="eq-posts.png" alt="Studio Equilíbrio - Posts aplicados"></div>
+                <div class="img-slide landscape"><img src="eq-catalogo.png" alt="Studio Equilíbrio - Catálogo"></div>
+                <div class="img-slide landscape"><img src="eq-identidade.png" alt="Studio Equilíbrio - Identidade aplicada"></div>
             </div>
         </div>
     </div>
