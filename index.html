@@ -111,12 +111,14 @@
         }
         .hero-eyebrow {
             font-family: var(--caps);
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             font-weight: 300;
             color: var(--accent);
-            letter-spacing: 0.3em;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
             margin-bottom: 40px;
+            padding: 0 16px;
+            white-space: nowrap;
             opacity: 0.8;
         }
         .hero-name {
@@ -155,10 +157,11 @@
             pointer-events: none;
         }
         .hero-logo-accent {
-            width: 44px;
-            height: 44px;
+            width: 96px;
+            height: 96px;
             object-fit: contain;
-            margin-top: 24px;
+            margin-top: 48px;
+            opacity: 0.95;
         }
         .hero-brand {
             font-family: var(--caps);
@@ -168,30 +171,6 @@
             letter-spacing: 0.4em;
             text-transform: uppercase;
             margin-top: 20px;
-        }
-        .hero-scroll {
-            margin-top: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            opacity: 0.4;
-        }
-        .hero-scroll span {
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            color: var(--t3);
-            text-transform: uppercase;
-        }
-        .hero-scroll-line {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
-            animation: scroll-pulse 2s ease-in-out infinite;
-        }
-        @keyframes scroll-pulse {
-            0%, 100% { opacity: 0.3; transform: scaleY(1); }
-            50% { opacity: 0.8; transform: scaleY(1.1); }
         }
 
         /* ═══════ MARQUEE ═══════ */
@@ -206,6 +185,10 @@
             display: flex;
             width: max-content;
             animation: marquee 28s linear infinite;
+            will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
         .marquee-item {
             font-family: var(--caps);
@@ -219,8 +202,8 @@
         }
         .marquee-dot { color: var(--accent); opacity: 0.5; padding: 0 4px; }
         @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% { transform: translateX(0) translateZ(0); }
+            100% { transform: translateX(-50%) translateZ(0); }
         }
         @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
@@ -364,6 +347,7 @@
             height: 500px;
             overflow: hidden;
             border-radius: 16px;
+            position: relative;
         }
         .ig-slide .instagram-media {
             min-width: unset !important;
@@ -372,6 +356,14 @@
             margin: 0 !important;
             border-radius: 16px !important;
             box-shadow: 0 4px 24px rgba(0,0,0,0.3) !important;
+        }
+        /* mobile: crop top (profile/"ver perfil") and bottom (likes/comments) bars */
+        @media (max-width: 767px) {
+            .ig-slide .instagram-media {
+                margin-top: -62px !important;
+                margin-bottom: -90px !important;
+                height: calc(100% + 152px) !important;
+            }
         }
 
         /* ═══════ IMAGE CAROUSEL ═══════ */
@@ -416,6 +408,7 @@
             width: 390px;
             object-fit: cover;
         }
+        .cz-img { height: 340px; width: auto; }
 
         /* ═══════ WEBSITES SECTION ═══════ */
         .websites { padding: 48px 24px; background: var(--bg); }
@@ -461,9 +454,16 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            transition: gap 0.3s;
+            padding: 10px 22px;
+            border: 1px solid var(--accent25);
+            border-radius: 100px;
+            transition: all 0.3s;
         }
-        .web-card-link:hover { gap: 10px; }
+        .web-card-link:hover {
+            gap: 10px;
+            background: var(--accent15);
+            border-color: var(--accent);
+        }
 
         /* ═══════ ABOUT ═══════ */
         .about { background: var(--bg); }
@@ -477,6 +477,10 @@
             display: flex;
             width: max-content;
             animation: marquee 20s linear infinite;
+            will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
         .about-marquee-text {
             font-family: var(--display);
@@ -554,11 +558,12 @@
             text-align: center;
         }
         .contact-logo {
-            width: 96px;
-            height: 96px;
+            width: 384px;
+            height: 384px;
+            max-width: 80%;
             object-fit: contain;
             margin-bottom: 40px;
-            opacity: 0.85;
+            opacity: 0.9;
         }
         .contact-title {
             font-family: var(--display);
@@ -640,6 +645,7 @@
         @media (min-width: 768px) {
             nav { padding: 18px 48px; }
             .hero { padding: 96px 48px 50px; }
+            .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.3em; padding: 0 24px; }
             .hero-photo { height: 170px; max-width: 680px; }
             .intro { padding: 80px 48px; }
             .projects-head { padding: 0 48px; }
@@ -649,11 +655,16 @@
             .ig-carousel::-webkit-scrollbar-track { background: var(--accent08); border-radius: 3px; }
             .ig-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
             .ig-slide { width: 340px; }
-            .ig-slide .instagram-media { max-width: 340px !important; }
+            .ig-slide .instagram-media {
+                max-width: 340px !important;
+                margin-top: -62px !important;
+                height: calc(100% + 62px) !important;
+            }
             .img-carousel { padding: 4px 48px 20px; scrollbar-width: thin; }
             .img-carousel::-webkit-scrollbar { display: block; height: 6px; }
             .img-carousel::-webkit-scrollbar-track { background: var(--accent08); border-radius: 3px; }
             .img-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+            .cz-img { height: 420px; }
             .websites { padding: 80px 48px; }
             .about-inner { padding: 80px 48px; }
             .contact { padding: 80px 48px; }
@@ -695,10 +706,6 @@
     <h1 class="hero-name">Zanetti</h1>
     <p class="hero-brand">Creator Mobile</p>
     <img src="logo.png" alt="Logo Lohana Zanetti" class="hero-logo-accent">
-    <div class="hero-scroll">
-        <div class="hero-scroll-line"></div>
-        <span>scroll</span>
-    </div>
 </section>
 
 <!-- ══════════════════ MARQUEE ══════════════════ -->
@@ -728,13 +735,13 @@
 </div>
 
 <!-- ══════════════════ INTRO ══════════════════ -->
-<section class="intro reveal">
-    <p class="section-label">sobre a creator mobile</p>
-    <p class="intro-headline">Do planejamento ao publish,<br>tudo pensado como um único processo.</p>
-    <p class="intro-text">
+<section class="intro">
+    <p class="section-label reveal">sobre a creator mobile</p>
+    <p class="intro-headline reveal">Do planejamento ao publish,<br>tudo pensado como um único&nbsp;processo.</p>
+    <p class="intro-text reveal">
         Estratégia, captação, fotografia, filmagem, edição e design integrados do conceito à entrega. Cada peça construída com intenção. Cada marca tratada como única.
     </p>
-    <div class="tags">
+    <div class="tags reveal">
         <span class="tag">Execução completa</span>
         <span class="tag">Estratégia</span>
         <span class="tag">Direção criativa</span>
@@ -774,8 +781,8 @@
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZi2gpoDd/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCZyzsJi2P/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCaElAp6Md/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DX9W44PB0PD/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYWjfpJRX/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DX9W44PB0PD/" data-instgrm-version="14"></blockquote></div>
             </div>
         </div>
     </div>
@@ -797,7 +804,7 @@
             <div class="ig-track">
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXeZbxZjtYy/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWdzVaRjqFq/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYKEMyXOgng/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT0LXP3DlTP/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYFde-yjkyP/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWT0IEQjj3J/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYxI1vxjuH8/" data-instgrm-version="14"></blockquote></div>
@@ -888,11 +895,11 @@
         </div>
         <div class="img-carousel">
             <div class="img-track">
-                <div class="img-slide"><img src="cz-logo.png" alt="Cilene Zanetti - Logo" style="height:340px;width:auto;"></div>
-                <div class="img-slide"><img src="cz-paleta.png" alt="Cilene Zanetti - Paleta" style="height:340px;width:auto;"></div>
-                <div class="img-slide"><img src="cz-metalico.png" alt="Cilene Zanetti - Logo metálico" style="height:340px;width:auto;"></div>
-                <div class="img-slide"><img src="cz-simples.png" alt="Cilene Zanetti - Logo simples" style="height:340px;width:auto;"></div>
-                <div class="img-slide"><img src="cz-mockup.png" alt="Cilene Zanetti - Mockup" style="height:340px;width:auto;"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-logo.png" alt="Cilene Zanetti - Logo"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-paleta.png" alt="Cilene Zanetti - Paleta"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-metalico.png" alt="Cilene Zanetti - Logo metálico"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-simples.png" alt="Cilene Zanetti - Logo simples"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-mockup.png" alt="Cilene Zanetti - Mockup"></div>
             </div>
         </div>
     </div>
@@ -923,21 +930,21 @@
 </section>
 
 <!-- ══════════════════ WEBSITES ══════════════════ -->
-<section class="websites reveal" id="sites">
-    <p class="section-label">além das redes</p>
-    <h2 class="section-title" style="margin-bottom:12px;">Sites e Bio Links</h2>
-    <p style="font-size:0.88rem;font-weight:300;color:var(--t3);max-width:480px;line-height:1.8;margin-bottom:0;">
+<section class="websites" id="sites">
+    <p class="section-label reveal">além das redes</p>
+    <h2 class="section-title reveal" style="margin-bottom:12px;">Sites e Bio Links</h2>
+    <p class="reveal" style="font-size:0.88rem;font-weight:300;color:var(--t3);max-width:480px;line-height:1.8;margin-bottom:0;">
         Além das redes sociais, também crio do zero: landing pages, biosites e páginas de link na bio com identidade visual, estrutura pensada e zero dependência de plataformas pagas.
     </p>
     <div class="web-grid">
-        <div class="web-card">
+        <div class="web-card reveal">
             <p class="web-card-title">Dolce Donut · Biosite</p>
             <p class="web-card-desc">Bio link completo criado do zero com identidade visual da marca, links organizados e WhatsApp integrado.</p>
             <a href="https://dolcedonut.github.io" target="_blank" class="web-card-link">
                 ver projeto <span>→</span>
             </a>
         </div>
-        <div class="web-card">
+        <div class="web-card reveal">
             <p class="web-card-title">Este portfólio</p>
             <p class="web-card-desc">Você está aqui. Criado do zero em HTML, hospedado no GitHub Pages, sem plataformas pagas ou templates prontos.</p>
             <a href="#inicio" class="web-card-link">
@@ -965,19 +972,19 @@
             <span class="about-marquee-text" style="opacity:0.3;padding:0 20px;">·</span>
         </div>
     </div>
-    <div class="about-inner reveal">
-        <h2 class="about-title">Meu nome é<br><em style="font-style:italic;color:var(--accent);">Lohana.</em></h2>
-        <p class="about-text">
+    <div class="about-inner">
+        <h2 class="about-title reveal">Meu nome é<br><em style="font-style:italic;color:var(--accent);">Lohana.</em></h2>
+        <p class="about-text reveal">
             Nascida em São Bernardo do Campo e vivendo hoje no interior de Santa Catarina, encontrei no conteúdo digital um caminho para unir o que amo: a estratégia por trás de uma marca, a <em>captação do momento certo</em>, a beleza de uma imagem bem composta e a conexão que um bom conteúdo é capaz de criar.
         </p>
-        <p class="about-text">
+        <p class="about-text reveal">
             Acredito que cada marca tem uma história, e meu trabalho é fazer essa história ser vista, sentida e lembrada. Do planejamento à entrega final, cada peça é pensada com propósito, cada detalhe existe por uma razão.
         </p>
-        <p class="about-text">
+        <p class="about-text reveal">
             Criar conteúdo não é só meu trabalho, é também o que eu faria no tempo livre. Acredito que é exatamente isso que faz a diferença na entrega. Além das telas, você me encontra aprendendo <em>crioulo haitiano como voluntária</em>, no CrossFit, regando as plantas, folheando um livro ou mergulhada em algum dorama coreano.
         </p>
         <div class="about-divider"></div>
-        <div class="about-traits">
+        <div class="about-traits reveal">
             apaixonada por café
             <span>+</span>
             crossfiteira
@@ -994,28 +1001,28 @@
             <span>+</span>
             voluntária · crioulo haitiano
         </div>
-        <div class="about-photo">
+        <div class="about-photo reveal">
             <img src="foto-sobre.png.png" alt="Lohana Zanetti">
         </div>
     </div>
 </section>
 
 <!-- ══════════════════ CONTATO ══════════════════ -->
-<section class="contact reveal" id="contato">
-    <img src="logo.png" alt="Logo Lohana Zanetti" class="contact-logo">
-    <h2 class="contact-title">vamos trabalhar juntos?</h2>
-    <p class="contact-text">
+<section class="contact" id="contato">
+    <img src="logo.png" alt="Logo Lohana Zanetti" class="contact-logo reveal">
+    <h2 class="contact-title reveal">vamos trabalhar juntos?</h2>
+    <p class="contact-text reveal">
         Se você precisa de redes sociais, vídeos, identidade visual, um site ou um biolink, estou aqui. Me conta o que sua marca precisa e a gente descobre juntos o melhor caminho.
     </p>
-    <div class="contact-links">
-        <a href="https://instagram.com/lohanazanettimedia" target="_blank" class="contact-link">instagram</a>
-        <a href="https://wa.me/5549988742812" target="_blank" class="contact-link">whatsapp</a>
+    <div class="contact-links reveal">
+        <a href="https://instagram.com/lohana.creator" target="_blank" class="contact-link">instagram</a>
+        <a href="https://wa.me/5549888742812" target="_blank" class="contact-link">whatsapp</a>
         <a href="mailto:lohanazanetti@gmail.com" class="contact-link">e-mail</a>
     </div>
 </section>
 
 <!-- ══════════════════ FOOTER ══════════════════ -->
-<footer>
+<footer class="reveal">
     <img src="logo.png" alt="Logo" class="footer-logo">
     <p>Lohana Zanetti · Creator Mobile</p>
 </footer>
