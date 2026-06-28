@@ -367,12 +367,21 @@
             transform: scale(1.1);
             transform-origin: center;
         }
-        /* mobile: crop top (profile/"ver perfil") and bottom (ver mais/curtidas/comentários/campo) bars */
+        /* mobile: show full Instagram post (profile, name, likes, comments), just zoomed out a bit
+           so it takes less screen space and the horizontal scrollbar stays visible */
         @media (max-width: 767px) {
+            .ig-carousel {
+                scrollbar-width: thin;
+                padding-bottom: 20px;
+            }
+            .ig-carousel::-webkit-scrollbar { display: block; height: 6px; }
+            .ig-carousel::-webkit-scrollbar-track { background: var(--accent08); border-radius: 3px; }
+            .ig-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+            .ig-slide { height: auto; overflow: visible; }
             .ig-slide .instagram-media {
-                margin-top: -30px !important;
-                margin-bottom: -500px !important;
-                height: calc(100% + 530px) !important;
+                transform: none;
+                margin: 0 !important;
+                zoom: 0.8;
             }
         }
 
@@ -705,11 +714,14 @@
             .nav-logo-text { line-height: 1.05; }
             .nav-links { gap: 22px; }
 
-            /* carousels: center each slide on screen, crop white margins on Cilene Zanetti images */
-            .ig-slide, .img-slide:not(.landscape) { scroll-snap-align: center; }
-            .img-slide:not(.landscape) { width: 260px; height: 380px; }
-            .img-slide:not(.landscape) img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-            .img-slide:not(.landscape) img.cz-img-top { object-position: center 28%; }
+            /* hero: name -> photo -> logo -> animated line flowing with almost no gap */
+            .hero { padding-bottom: 0; }
+            .hero-photo { margin: 2px 0; }
+            .hero-brand { margin-top: 2px; }
+            .hero-logo-accent { margin-top: 2px; }
+
+            /* carousels: center each slide on screen */
+            .ig-slide { scroll-snap-align: center; }
 
             /* Dolce Donut CTA: pulsing lilac glow */
             .web-card-link.pulse {
@@ -1010,10 +1022,10 @@
         </div>
         <div class="img-carousel" id="cz-carousel">
             <div class="img-track">
-                <div class="img-slide"><img class="cz-img cz-img-top" src="cz-logo.png" alt="Cilene Zanetti - Logo"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-logo.png" alt="Cilene Zanetti - Logo"></div>
                 <div class="img-slide"><img class="cz-img" src="cz-paleta.png" alt="Cilene Zanetti - Paleta"></div>
-                <div class="img-slide"><img class="cz-img cz-img-top" src="cz-metalico.png" alt="Cilene Zanetti - Logo metálico"></div>
-                <div class="img-slide"><img class="cz-img cz-img-top" src="cz-simples.png" alt="Cilene Zanetti - Logo simples"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-metalico.png" alt="Cilene Zanetti - Logo metálico"></div>
+                <div class="img-slide"><img class="cz-img" src="cz-simples.png" alt="Cilene Zanetti - Logo simples"></div>
                 <div class="img-slide"><img class="cz-img" src="cz-mockup.png" alt="Cilene Zanetti - Mockup"></div>
             </div>
         </div>
