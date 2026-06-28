@@ -155,6 +155,7 @@
             z-index: 2;
             pointer-events: none;
         }
+        .hero-logo-wrap { display: contents; }
         .hero-logo-accent {
             width: 360px;
             height: 360px;
@@ -367,8 +368,9 @@
             transform: scale(1.1);
             transform-origin: center;
         }
-        /* mobile: show full Instagram post (profile, name, likes, comments), just zoomed out a bit
-           so it takes less screen space and the horizontal scrollbar stays visible */
+        /* mobile: show header (profile/name) and the design image in full, but crop the
+           footer (likes, comments, "ver mais no Instagram"). Exact crop height is computed
+           in JS per-slide once Instagram resizes its iframe (see script at bottom). */
         @media (max-width: 767px) {
             .ig-carousel {
                 scrollbar-width: thin;
@@ -377,7 +379,7 @@
             .ig-carousel::-webkit-scrollbar { display: block; height: 6px; }
             .ig-carousel::-webkit-scrollbar-track { background: var(--accent08); border-radius: 3px; }
             .ig-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
-            .ig-slide { height: auto; overflow: visible; }
+            .ig-slide { height: 420px; overflow: hidden; }
             .ig-slide .instagram-media {
                 transform: none;
                 margin: 0 !important;
@@ -717,8 +719,25 @@
             /* hero: name -> photo -> logo -> animated line flowing with almost no gap */
             .hero { padding-bottom: 0; }
             .hero-photo { margin: 2px 0; }
-            .hero-brand { margin-top: 2px; }
-            .hero-logo-accent { margin-top: 2px; }
+
+            /* logo.png has a huge transparent margin baked into the asset (~33% per side),
+               which makes it look like it's floating far from the text above even with a
+               near-zero CSS margin. Crop into the visible mark so it sits tight under
+               "Creator Mobile" — desktop/tablet keep the original uncropped image. */
+            .hero-logo-wrap {
+                display: block;
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .hero-logo-accent {
+                width: 285px !important;
+                height: 356px !important;
+                margin-top: -118px !important;
+                margin-left: -84px !important;
+                max-width: none;
+            }
 
             /* carousels: center each slide on screen */
             .ig-slide { scroll-snap-align: center; }
@@ -815,7 +834,7 @@
     </div>
     <h1 class="hero-name">Zanetti</h1>
     <p class="hero-brand">Creator Mobile</p>
-    <img src="logo.png" alt="Logo Lohana Zanetti" class="hero-logo-accent">
+    <span class="hero-logo-wrap"><img src="logo.png" alt="Logo Lohana Zanetti" class="hero-logo-accent"></span>
 </section>
 
 <!-- ══════════════════ MARQUEE ══════════════════ -->
@@ -1171,9 +1190,37 @@
     }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
+    // Mobile only: crop each Instagram embed to header + design image, hiding the
+    // footer (likes, comments, "ver mais no Instagram"). Instagram resizes its iframe
+    // asynchronously after load, so we watch for that and subtract a fixed footer height
+    // from whatever height it ends up with — this adapts to posts and reels alike.
+    function cropIgSlidesMobile() {
+        if (window.innerWidth > 767) return;
+        const FOOTER_PX = 130;
+        const MIN_HEIGHT = 220;
+        document.querySelectorAll('.ig-slide').forEach(slide => {
+            if (slide.dataset.igCropWatching) return;
+            slide.dataset.igCropWatching = '1';
+            const tryCrop = () => {
+                const iframe = slide.querySelector('iframe');
+                if (!iframe) return;
+                const h = iframe.getBoundingClientRect().height;
+                if (h > 0) slide.style.height = Math.max(h - FOOTER_PX, MIN_HEIGHT) + 'px';
+            };
+            const watch = () => {
+                const iframe = slide.querySelector('iframe');
+                if (!iframe) { setTimeout(watch, 200); return; }
+                new MutationObserver(tryCrop).observe(iframe, { attributes: true, attributeFilter: ['style', 'height'] });
+                tryCrop();
+            };
+            watch();
+        });
+    }
+
     // Re-process Instagram embeds after fonts/scripts load
     window.addEventListener('load', () => {
         if (window.instgrm) window.instgrm.Embeds.process();
+        cropIgSlidesMobile();
     });
 
     // Swipe indicator dots (Studio Equilíbrio carousel)
