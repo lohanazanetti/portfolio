@@ -156,8 +156,8 @@
             pointer-events: none;
         }
         .hero-logo-accent {
-            width: 180px;
-            height: 180px;
+            width: 360px;
+            height: 360px;
             object-fit: contain;
             margin-top: 16px;
             opacity: 0.95;
@@ -370,9 +370,9 @@
         /* mobile: crop top (profile/"ver perfil") and bottom (ver mais/curtidas/comentários/campo) bars */
         @media (max-width: 767px) {
             .ig-slide .instagram-media {
-                margin-top: -38px !important;
-                margin-bottom: -340px !important;
-                height: calc(100% + 378px) !important;
+                margin-top: -30px !important;
+                margin-bottom: -500px !important;
+                height: calc(100% + 530px) !important;
             }
         }
 
@@ -604,8 +604,8 @@
         }
         @media (max-width: 767px) {
             .about-inner { padding-bottom: 20px; }
-            .contact { padding-top: 16px; }
-            .contact-logo { margin-bottom: 8px; }
+            .contact { padding-top: 4px; }
+            .contact-logo { width: 150px; height: 150px; max-width: 45%; margin-bottom: -10px; }
             .contact-title { margin-bottom: 16px; }
         }
         .contact-title {
@@ -682,6 +682,10 @@
             }
             .about-text {
                 text-align: center;
+                max-width: 340px;
+                margin-left: auto;
+                margin-right: auto;
+                text-wrap: balance;
             }
         }
 
@@ -692,6 +696,30 @@
             transition: opacity 1.4s ease, transform 1.4s ease;
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ═══════ MOBILE FIXES ═══════ */
+        @media (max-width: 767px) {
+            /* nav: pull logo left, tighten Creator/Mobile line spacing, equalize gaps */
+            nav { justify-content: flex-start; gap: 22px; padding: 16px 16px 16px 12px; }
+            .nav-logo { gap: 8px; }
+            .nav-logo-text { line-height: 1.05; }
+            .nav-links { gap: 22px; }
+
+            /* carousels: center each slide on screen, crop white margins on Cilene Zanetti images */
+            .ig-slide, .img-slide:not(.landscape) { scroll-snap-align: center; }
+            .img-slide:not(.landscape) { width: 260px; height: 380px; }
+            .img-slide:not(.landscape) img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+            .img-slide:not(.landscape) img.cz-img-top { object-position: center 28%; }
+
+            /* Dolce Donut CTA: pulsing lilac glow */
+            .web-card-link.pulse {
+                animation: ctaPulse 1.8s ease-in-out infinite;
+            }
+            @keyframes ctaPulse {
+                0%, 100% { box-shadow: 0 0 0 0 var(--accent25); transform: scale(1); }
+                50% { box-shadow: 0 0 18px 6px var(--accent25); transform: scale(1.04); }
+            }
+        }
 
         /* ═══════ DESKTOP ═══════ */
         @media (min-width: 768px) {
@@ -842,7 +870,7 @@
                 <span class="project-tag">Edição</span>
             </div>
         </div>
-        <div class="ig-carousel">
+        <div class="ig-carousel" id="dolce-carousel">
             <div class="ig-track">
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYiSiJFjs/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYvzcp7aw/" data-instgrm-version="14"></blockquote></div>
@@ -854,6 +882,9 @@
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DaCYWjfpJRX/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DX9W44PB0PD/" data-instgrm-version="14"></blockquote></div>
             </div>
+        </div>
+        <div class="carousel-dots" data-dots-for="dolce-carousel">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
     </div>
 
@@ -870,13 +901,16 @@
                 <span class="project-tag">Direção Criativa</span>
             </div>
         </div>
-        <div class="ig-carousel">
+        <div class="ig-carousel" id="foccus-carousel">
             <div class="ig-track">
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXeZbxZjtYy/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWdzVaRjqFq/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWT0IEQjj3J/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYxI1vxjuH8/" data-instgrm-version="14"></blockquote></div>
             </div>
+        </div>
+        <div class="carousel-dots" data-dots-for="foccus-carousel">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
     </div>
 
@@ -894,14 +928,17 @@
                 <span class="project-tag">Humor</span>
             </div>
         </div>
-        <div class="ig-carousel">
+        <div class="ig-carousel" id="farmacia-carousel">
             <div class="ig-track">
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZaJCdcuMdK/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZXg1PyjjOT/" data-instgrm-version="14"></blockquote></div>
-                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXjwNw1jhhM/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU0buClDU6e/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZaJCdcuMdK/" data-instgrm-version="14"></blockquote></div>
+                <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXjwNw1jhhM/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DRQQtsOkms5/" data-instgrm-version="14"></blockquote></div>
             </div>
+        </div>
+        <div class="carousel-dots" data-dots-for="farmacia-carousel">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
     </div>
 
@@ -918,11 +955,14 @@
                 <span class="project-tag">Patrocínio</span>
             </div>
         </div>
-        <div class="ig-carousel">
+        <div class="ig-carousel" id="brasil-carousel">
             <div class="ig-track">
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZVI7kvRYZ6/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZFifgFRDNy/" data-instgrm-version="14"></blockquote></div>
             </div>
+        </div>
+        <div class="carousel-dots" data-dots-for="brasil-carousel">
+            <span class="dot active"></span><span class="dot"></span>
         </div>
     </div>
 
@@ -968,14 +1008,17 @@
                 <span class="project-tag">Design</span>
             </div>
         </div>
-        <div class="img-carousel">
+        <div class="img-carousel" id="cz-carousel">
             <div class="img-track">
-                <div class="img-slide"><img class="cz-img" src="cz-logo.png" alt="Cilene Zanetti - Logo"></div>
+                <div class="img-slide"><img class="cz-img cz-img-top" src="cz-logo.png" alt="Cilene Zanetti - Logo"></div>
                 <div class="img-slide"><img class="cz-img" src="cz-paleta.png" alt="Cilene Zanetti - Paleta"></div>
-                <div class="img-slide"><img class="cz-img" src="cz-metalico.png" alt="Cilene Zanetti - Logo metálico"></div>
-                <div class="img-slide"><img class="cz-img" src="cz-simples.png" alt="Cilene Zanetti - Logo simples"></div>
+                <div class="img-slide"><img class="cz-img cz-img-top" src="cz-metalico.png" alt="Cilene Zanetti - Logo metálico"></div>
+                <div class="img-slide"><img class="cz-img cz-img-top" src="cz-simples.png" alt="Cilene Zanetti - Logo simples"></div>
                 <div class="img-slide"><img class="cz-img" src="cz-mockup.png" alt="Cilene Zanetti - Mockup"></div>
             </div>
+        </div>
+        <div class="carousel-dots" data-dots-for="cz-carousel">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
     </div>
 
@@ -992,13 +1035,16 @@
                 <span class="project-tag">Vídeo</span>
             </div>
         </div>
-        <div class="ig-carousel">
+        <div class="ig-carousel" id="colab-carousel">
             <div class="ig-track">
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DNqPxvWt_G4/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZI6Q_XxafX/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSP3tT_FeOf/" data-instgrm-version="14"></blockquote></div>
                 <div class="ig-slide"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZ3V-ZQx531/" data-instgrm-version="14"></blockquote></div>
             </div>
+        </div>
+        <div class="carousel-dots" data-dots-for="colab-carousel">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
     </div>
 
@@ -1015,7 +1061,7 @@
         <div class="web-card reveal">
             <p class="web-card-title">Dolce Donut · Biosite</p>
             <p class="web-card-desc">Bio link completo criado do zero com identidade visual da marca, links organizados e WhatsApp integrado.</p>
-            <a href="https://dolcedonut.github.io" target="_blank" class="web-card-link">
+            <a href="https://dolcedonut.github.io" target="_blank" class="web-card-link pulse">
                 ver projeto
             </a>
         </div>
@@ -1122,7 +1168,7 @@
     document.querySelectorAll('.carousel-dots[data-dots-for]').forEach(dotsEl => {
         const carousel = document.getElementById(dotsEl.dataset.dotsFor);
         if (!carousel) return;
-        const slides = carousel.querySelectorAll('.img-slide');
+        const slides = carousel.querySelectorAll('.img-slide, .ig-slide');
         const dots = dotsEl.querySelectorAll('.dot');
         carousel.addEventListener('scroll', () => {
             const maxScroll = carousel.scrollWidth - carousel.clientWidth;
