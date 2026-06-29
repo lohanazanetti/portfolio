@@ -1326,12 +1326,11 @@
     }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    // Mobile only: crop each Instagram embed to header + design image, hiding the
+    // Crop each Instagram embed to header + design image, hiding the
     // footer (likes, comments, "ver mais no Instagram"). Instagram resizes its iframe
     // asynchronously after load, so we watch for that and subtract a fixed footer height
     // from whatever height it ends up with — this adapts to posts and reels alike.
     function cropIgSlidesMobile() {
-        if (window.innerWidth > 767) return;
         const FOOTER_PX = 130;
         const MIN_HEIGHT = 220;
         document.querySelectorAll('.ig-slide').forEach(slide => {
