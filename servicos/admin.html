@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#1F0822">
+    <title>Painel administrativo | Serviços</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span class="brand-mono">LZ</span>
+        <span class="back-link" id="btn-logout" style="display:none;cursor:pointer;">sair</span>
+    </div>
+
+    <!-- Tela de login: só Lohana (autenticada via Firebase Auth) acessa o painel -->
+    <div id="tela-login" class="wrap admin-login">
+        <h1 class="page-title">Painel administrativo</h1>
+        <p class="block-text" style="margin-bottom:20px;">Entre com o e-mail e senha cadastrados no Firebase Authentication.</p>
+        <input type="email" id="login-email" class="admin-input" placeholder="e-mail">
+        <input type="password" id="login-senha" class="admin-input" placeholder="senha">
+        <button class="btn-primary" id="btn-login" style="margin-top:10px;">Entrar</button>
+        <p id="login-erro" class="block-text" style="color:#ff9c9c;margin-top:12px;display:none;"></p>
+    </div>
+
+    <!-- Painel principal: visível só após login -->
+    <div id="painel" class="wrap" style="display:none;">
+
+        <section class="block" style="border-top:none;">
+            <h2 class="block-title">Clientes cadastrados</h2>
+            <div id="lista-clientes"></div>
+            <button class="btn-outline" id="btn-novo-cliente" style="margin-top:12px;">+ novo cliente</button>
+        </section>
+
+        <section class="block" id="editor-cliente" style="display:none;">
+            <h2 class="block-title">Editar cliente</h2>
+
+            <label class="admin-label">Código (usado na URL: ?c=CODIGO)</label>
+            <input type="text" id="f-codigo" class="admin-input" placeholder="ex: roselia-x7k2m9">
+
+            <label class="admin-label">Tipo de acesso</label>
+            <select id="f-tipo" class="admin-input">
+                <option value="geral">Geral (só tabela de valores)</option>
+                <option value="individual">Individual (conteúdo completo)</option>
+            </select>
+
+            <div id="campos-individual">
+                <label class="admin-label">Nome do cliente</label>
+                <input type="text" id="f-nome" class="admin-input" placeholder="ex: Roselia">
+            </div>
+
+            <h3 class="admin-subtitle">Tabela de valores</h3>
+            <div id="lista-valores"></div>
+            <button class="btn-outline admin-add-btn" id="btn-add-valor">+ item de valor</button>
+
+            <div id="bloco-individual">
+                <h3 class="admin-subtitle">Textos personalizados</h3>
+                <label class="admin-label">Abertura</label>
+                <textarea id="f-abertura" class="admin-textarea"></textarea>
+                <label class="admin-label">Como o trabalho funciona</label>
+                <textarea id="f-comoFunciona" class="admin-textarea"></textarea>
+                <label class="admin-label">Por que os valores foram atualizados</label>
+                <textarea id="f-porQueAtualizado" class="admin-textarea"></textarea>
+                <label class="admin-label">Fluxo de aprovação e contratação mensal</label>
+                <textarea id="f-fluxoAprovacao" class="admin-textarea"></textarea>
+                <label class="admin-label">Extensão do modelo (ex: outros ambientes/CNPJs)</label>
+                <textarea id="f-extensaoAcademia" class="admin-textarea"></textarea>
+
+                <h3 class="admin-subtitle">Simulações ilustrativas</h3>
+                <div id="lista-simulacoes"></div>
+                <button class="btn-outline admin-add-btn" id="btn-add-sim">+ simulação</button>
+
+                <h3 class="admin-subtitle">Catálogo do mês</h3>
+                <label class="admin-label">Rótulo do mês (ex: Julho 2026)</label>
+                <input type="text" id="f-catalogo-mes" class="admin-input">
+
+                <div class="admin-catalogo-grupo" data-grupo="videos">
+                    <h4 class="admin-group-title">Vídeos (R$100/un.)</h4>
+                    <div class="lista-catalogo" data-grupo="videos"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo="videos">+ vídeo</button>
+                </div>
+                <div class="admin-catalogo-grupo" data-grupo="carrosseis">
+                    <h4 class="admin-group-title">Carrosséis (R$65/un.)</h4>
+                    <div class="lista-catalogo" data-grupo="carrosseis"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo="carrosseis">+ carrossel</button>
+                </div>
+                <div class="admin-catalogo-grupo" data-grupo="posts">
+                    <h4 class="admin-group-title">Posts estáticos (R$35/un.)</h4>
+                    <div class="lista-catalogo" data-grupo="posts"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo="posts">+ post</button>
+                </div>
+            </div>
+
+            <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                <button class="btn-primary" id="btn-salvar-cliente">Salvar cliente</button>
+                <a id="link-acesso" class="admin-link-preview" href="#" target="_blank"></a>
+            </div>
+            <p id="salvar-status" class="confirm-note"></p>
+
+            <div id="secao-respostas">
+                <h3 class="admin-subtitle">Respostas enviadas pelo cliente</h3>
+                <div id="lista-respostas" class="block-text"></div>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2 class="block-title">Importar dados iniciais</h2>
+            <p class="block-text">
+                Cria (ou sobrescreve) o código geral <code>geral</code> e o exemplo individual
+                <code>roselia-x7k2m9</code> com o conteúdo já definido no documento de projeto.
+                Use só na primeira configuração — rodar de novo sobrescreve o que já existir
+                nesses dois códigos.
+            </p>
+            <button class="btn-outline" id="btn-seed" style="margin-top:12px;">Importar dados de exemplo</button>
+            <p id="seed-status" class="confirm-note"></p>
+        </section>
+
+    </div>
+
+    <script src="seed-data.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

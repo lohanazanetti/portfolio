@@ -1,0 +1,391 @@
+/* ═══════════════════════════════════════════════════════════════
+   Creator Mobile — Página de Serviços
+   Identidade visual compartilhada com o portfólio principal
+   (lohanazanetti.github.io/portfolio). Se a paleta ou as fontes do
+   portfólio mudarem, replique aqui os mesmos valores.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+    --bg:        #1F0822;
+    --bg-2:      #2A0E30;
+    --bg-3:      #3A1845;
+    --accent:    #D180C8;
+    --accent08:  rgba(209,128,200,0.08);
+    --accent10:  rgba(209,128,200,0.10);
+    --accent15:  rgba(209,128,200,0.15);
+    --accent25:  rgba(209,128,200,0.25);
+    --white:     #FFFFFF;
+    --t2:        #E8D0E5;
+    --t3:        #9B7A95;
+    --display:   'Cormorant', Georgia, serif;
+    --body:      'DM Sans', system-ui, sans-serif;
+    --caps:      'Josefin Sans', system-ui, sans-serif;
+    color-scheme: dark;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    background: var(--bg);
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg);
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--t2);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 40px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ═══════ HEADER / MONOGRAMA ═══════ */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+.brand-mono {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+}
+.top-bar .back-link {
+    font-family: var(--caps);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--t3);
+    border: 1px solid var(--accent25);
+    padding: 6px 16px;
+    border-radius: 100px;
+    transition: all 0.25s;
+}
+.top-bar .back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ═══════ HERO ═══════ */
+.page-hero {
+    padding: 24px 24px 40px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+.page-eyebrow {
+    font-family: var(--caps);
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+}
+.page-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 12px;
+}
+.page-lede {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--t2);
+    line-height: 1.8;
+    max-width: 560px;
+}
+
+/* ═══════ SEÇÕES DE TEXTO ═══════ */
+section.block {
+    padding: 32px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    border-top: 1px solid var(--accent10);
+}
+section.block:first-of-type { border-top: none; }
+.block-title {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 14px;
+}
+.block-text {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--t2);
+    line-height: 1.85;
+}
+.block-text + .block-text { margin-top: 16px; }
+.block-text strong { color: var(--white); font-weight: 500; }
+.block-text em { color: var(--accent); font-style: italic; }
+
+/* ═══════ TABELA DE VALORES ═══════ */
+.valores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    background: var(--bg-2);
+    border-radius: 16px;
+    overflow: hidden;
+}
+.valores-table th, .valores-table td {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.85rem;
+}
+.valores-table th {
+    font-family: var(--caps);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent10);
+    font-weight: 400;
+}
+.valores-table td { border-top: 1px solid var(--accent10); color: var(--t2); }
+.valores-table td:last-child, .valores-table th:last-child {
+    text-align: right;
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* ═══════ SIMULAÇÕES ═══════ */
+.sim-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.sim-table th, .sim-table td {
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    text-align: left;
+    border-top: 1px solid var(--accent10);
+    color: var(--t2);
+}
+.sim-table th {
+    font-family: var(--caps);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-top: none;
+}
+.sim-table td:last-child { color: var(--white); font-weight: 500; text-align: right; white-space: nowrap; }
+
+/* ═══════ CATÁLOGO INTERATIVO ═══════ */
+.catalogo-group { margin-bottom: 28px; }
+.catalogo-group-title {
+    font-family: var(--caps);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+.catalogo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: var(--bg-2);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+.catalogo-item:hover { border-color: var(--accent25); }
+.catalogo-item.selected { border-color: var(--accent); background: var(--accent08); }
+.catalogo-item input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 1.5px solid var(--accent25);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    background: var(--bg);
+}
+.catalogo-item input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+.catalogo-item input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px; top: 2px;
+    width: 5px; height: 10px;
+    border: solid var(--bg);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.catalogo-item-body { flex: 1; }
+.catalogo-item-title {
+    font-size: 0.85rem;
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.catalogo-item-desc {
+    font-size: 0.78rem;
+    color: var(--t3);
+    line-height: 1.6;
+}
+.catalogo-item-price {
+    font-family: var(--caps);
+    font-size: 0.7rem;
+    color: var(--accent);
+    white-space: nowrap;
+    margin-left: auto;
+    padding-left: 8px;
+}
+
+/* bloco fixo (Stories Fotográficos) + avulso (Story Arte, com qty) */
+.catalogo-fixed {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--bg-2);
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+.catalogo-fixed-body { flex: 1; }
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg);
+    border-radius: 100px;
+    padding: 4px;
+}
+.qty-btn {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent15);
+    color: var(--accent);
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+}
+.qty-btn:hover { background: var(--accent25); }
+.qty-value { min-width: 20px; text-align: center; color: var(--white); font-size: 0.85rem; }
+
+/* ═══════ BARRA FIXA DE TOTAL ═══════ */
+.total-bar {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--bg-3);
+    border-top: 1px solid var(--accent25);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    z-index: 50;
+    box-shadow: 0 -8px 30px rgba(0,0,0,0.4);
+}
+.total-bar-label {
+    font-family: var(--caps);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--t3);
+}
+.total-bar-value {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: 500;
+}
+.total-bar-status {
+    font-size: 0.7rem;
+    color: var(--t3);
+}
+
+/* ═══════ BOTÕES ═══════ */
+.btn-primary {
+    font-family: var(--caps);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    padding: 12px 26px;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s, opacity 0.2s;
+}
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-outline {
+    font-family: var(--caps);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent25);
+    padding: 12px 26px;
+    border-radius: 100px;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn-outline:hover { background: var(--accent15); border-color: var(--accent); }
+
+/* ═══════ ESTADOS (loading / erro) ═══════ */
+.state-screen {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+}
+.state-screen .page-title { margin-bottom: 8px; }
+
+/* ═══════ CONFIRMAÇÃO ═══════ */
+.confirm-note {
+    font-size: 0.78rem;
+    color: var(--t3);
+    margin-top: 10px;
+}
+.confirm-success {
+    background: var(--accent15);
+    border: 1px solid var(--accent25);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-top: 14px;
+}
+
+/* espaço extra no fim do conteúdo pra não ficar escondido atrás da barra fixa */
+.content-spacer { height: 90px; }
+
+@media (min-width: 640px) {
+    .page-hero { padding-top: 32px; }
+    .total-bar { padding: 18px 32px; }
+}

@@ -1,0 +1,101 @@
+/* estilos específicos do painel administrativo, complementando style.css */
+
+.admin-login {
+    padding-top: 60px;
+    max-width: 420px;
+}
+
+.admin-input, .admin-textarea {
+    width: 100%;
+    background: var(--bg-2);
+    border: 1px solid var(--accent25);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: var(--white);
+    font-family: var(--body);
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+}
+.admin-input:focus, .admin-textarea:focus { outline: none; border-color: var(--accent); }
+.admin-textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+
+.admin-label {
+    display: block;
+    font-family: var(--caps);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--t3);
+    margin-bottom: 6px;
+}
+
+.admin-subtitle {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--white);
+    margin: 26px 0 12px;
+}
+
+.admin-group-title {
+    font-family: var(--caps);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 18px 0 10px;
+}
+
+.admin-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    background: var(--bg-2);
+    padding: 12px;
+    border-radius: 12px;
+}
+.admin-row > * { margin-bottom: 0 !important; }
+.admin-row .admin-input, .admin-row .admin-textarea { flex: 1; margin-bottom: 0; }
+.admin-row-remove {
+    background: transparent;
+    border: none;
+    color: var(--t3);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 8px;
+}
+.admin-row-remove:hover { color: #ff9c9c; }
+
+.admin-add-btn { margin-bottom: 20px; }
+
+.admin-cliente-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--bg-2);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.admin-cliente-item:hover { background: var(--accent10); }
+.admin-cliente-badge {
+    font-family: var(--caps);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent15);
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+
+.admin-link-preview {
+    font-size: 0.78rem;
+    color: var(--t3);
+    word-break: break-all;
+}
+
+#campos-individual, #bloco-individual, #secao-respostas { display: none; }

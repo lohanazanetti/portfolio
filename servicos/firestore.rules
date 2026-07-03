@@ -1,0 +1,33 @@
+/* ═══════════════════════════════════════════════════════════════
+   Regras do Firestore — cole isso no console do Firebase em
+   Firestore Database > Regras, e clique em "Publicar".
+   ═══════════════════════════════════════════════════════════════
+   Lógica:
+   - Qualquer pessoa pode LER um documento de cliente (é assim que
+     o link ?c=CODIGO funciona sem senha) — mas só quem tem o
+     código sabe o caminho, então continua sendo um "link secreto".
+   - Só uma conta autenticada (o login da Lohana no painel admin)
+     pode CRIAR/EDITAR/APAGAR documentos de clientes.
+   - Qualquer pessoa pode CRIAR ou ATUALIZAR a própria seleção
+     mensal (subcoleção "selecoes"), mas não pode ler, listar ou
+     apagar seleções de ninguém — só a Lohana (autenticada) lê isso
+     pelo painel admin.
+   ═══════════════════════════════════════════════════════════════ */
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /clientes/{codigo} {
+      allow get: if true;
+      allow list: if false;
+      allow write: if request.auth != null;
+
+      match /selecoes/{mesId} {
+        allow create, update: if true;
+        allow get, list, delete: if request.auth != null;
+      }
+    }
+  }
+}
