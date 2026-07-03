@@ -6,7 +6,7 @@ Site estático (GitHub Pages) com backend leve em Firebase Firestore, com três 
 2. **Geral** (`index.html?c=geral`) — mostra só a tabela de valores padrão.
 3. **Individual** (`index.html?c=CODIGO-DO-CLIENTE`) — conteúdo completo personalizado + tabela de valores + catálogo do mês interativo, com soma automática e envio da seleção.
 
-URL final esperada: `lohanazanetti.github.io/servicos/`
+URL real publicada: `lohanazanetti.github.io/portfolio/servicos/` — como este projeto vive dentro do repositório `portfolio` (e não em um repositório próprio chamado `lohanazanetti.github.io`), o GitHub Pages publica tudo sob o prefixo `/portfolio/`. Os links internos do site (botão do portfólio, link de acesso gerado no painel admin) já usam caminhos relativos e funcionam corretamente com esse prefixo.
 
 ## Arquivos
 
@@ -26,8 +26,8 @@ URL final esperada: `lohanazanetti.github.io/servicos/`
 2. Ative **Firestore Database** (modo produção) e, em **Authentication**, ative o provedor **E-mail/senha**. Crie um usuário (seu e-mail) — é o login do painel admin.
 3. Em **Configurações do projeto > Geral > Seus apps**, registre um app Web e copie o `firebaseConfig` para `firebase-config.js`.
 4. Cole o conteúdo de `firestore.rules` na aba **Regras** do Firestore e publique.
-5. Publique a pasta `/servicos` no GitHub Pages (mesma lógica do portfólio).
-6. Acesse `lohanazanetti.github.io/servicos/admin.html`, faça login, e clique em **"Importar dados de exemplo"** para popular os códigos `geral` e `roselia-x7k2m9` com o conteúdo já combinado.
+5. Nada a publicar separadamente: a pasta `/servicos` já faz parte do repositório `portfolio`, então basta o merge/push para `main` chegar ao GitHub Pages (o mesmo deploy que publica o portfólio).
+6. Acesse `lohanazanetti.github.io/portfolio/servicos/admin.html`, faça login, e clique em **"Importar dados de exemplo"** para popular os códigos `geral` e `roselia-x7k2m9` com o conteúdo já combinado.
 
 ## Como adicionar um novo cliente (Glaucia, Roque, Marcos...)
 
