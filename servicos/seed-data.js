@@ -26,7 +26,7 @@ const SEED_DATA = {
         valores: VALORES_PADRAO
     },
 
-    'roselia-x7k2m9': {
+    'descontofacil-x7k2m9': {
         tipo: 'individual',
         nome: 'Farmácia Desconto Fácil',
         valores: VALORES_PADRAO,

@@ -15,7 +15,7 @@ URL real publicada: `lohanazanetti.github.io/portfolio/servicos/` — como este 
 | `publico.html` | Camada 1 — texto fixo, sem Firebase |
 | `index.html` + `app.js` | Roteador das Camadas 2 e 3 — lê `?c=` e busca o cliente no Firestore |
 | `admin.html` + `admin.js` + `admin.css` | Painel administrativo (login da Lohana) para cadastrar clientes, valores, textos e catálogo do mês |
-| `seed-data.js` | Conteúdo de exemplo (código `geral` + `roselia-x7k2m9`), usado só no botão "Importar dados de exemplo" do admin |
+| `seed-data.js` | Conteúdo de exemplo (código `geral` + `descontofacil-x7k2m9`), usado só no botão "Importar dados de exemplo" do admin |
 | `firebase-config.js` | Credenciais do projeto Firebase — **precisa ser preenchido** (veja comentários no arquivo) |
 | `firestore.rules` | Regras de segurança do Firestore — cole no console do Firebase |
 | `style.css` / `admin.css` | Identidade visual Creator Mobile (mesma paleta/fontes do portfólio) |
@@ -27,7 +27,7 @@ URL real publicada: `lohanazanetti.github.io/portfolio/servicos/` — como este 
 3. Em **Configurações do projeto > Geral > Seus apps**, registre um app Web e copie o `firebaseConfig` para `firebase-config.js`.
 4. Cole o conteúdo de `firestore.rules` na aba **Regras** do Firestore e publique.
 5. Nada a publicar separadamente: a pasta `/servicos` já faz parte do repositório `portfolio`, então basta o merge/push para `main` chegar ao GitHub Pages (o mesmo deploy que publica o portfólio).
-6. Acesse `lohanazanetti.github.io/portfolio/servicos/admin.html`, faça login, e clique em **"Importar dados de exemplo"** para popular os códigos `geral` e `roselia-x7k2m9` com o conteúdo já combinado.
+6. Acesse `lohanazanetti.github.io/portfolio/servicos/admin.html`, faça login, e clique em **"Importar dados de exemplo"** para popular os códigos `geral` e `descontofacil-x7k2m9` com o conteúdo já combinado.
 
 ## Como adicionar um novo cliente (Glaucia, Roque, Marcos...)
 

@@ -264,7 +264,7 @@ async function carregarRespostas(codigo) {
 
 document.getElementById('btn-seed').addEventListener('click', async () => {
     const status = document.getElementById('seed-status');
-    if (!confirm('Isso vai sobrescrever os códigos "geral" e "roselia-x7k2m9". Continuar?')) return;
+    if (!confirm('Isso vai sobrescrever os códigos "geral" e "descontofacil-x7k2m9". Continuar?')) return;
     status.textContent = 'Importando…';
     try {
         await Promise.all(
