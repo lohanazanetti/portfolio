@@ -425,6 +425,14 @@ section.block:first-of-type { border-top: none; }
 /* espaço extra no fim do conteúdo pra não ficar escondido atrás da barra fixa */
 .content-spacer { height: 90px; }
 
+/* ═══════ REVEAL (mesma animação do portfólio principal) ═══════ */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
 @media (min-width: 640px) {
     .page-hero { padding-top: 32px; }
     .total-bar { padding: 18px 32px; }

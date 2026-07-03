@@ -5,6 +5,7 @@
    clientes/{codigo} no Firestore e decide o que renderizar:
      - tipo "geral"      → só a tabela de valores (Camada 2)
      - tipo "individual" → conteúdo completo + catálogo interativo (Camada 3)
+     - tipo "redirect"   → código antigo (trocado), redireciona para o novo
      - documento inexistente → mensagem "acesso não encontrado"
 
    Lohana: TODO o conteúdo (textos, tabela de valores, catálogo do mês)
@@ -41,7 +42,9 @@ async function init() {
             return;
         }
         const data = snap.data();
-        if (data.tipo === 'geral') {
+        if (data.tipo === 'redirect' && data.redirectPara) {
+            window.location.replace(`${window.location.pathname}?c=${data.redirectPara}`);
+        } else if (data.tipo === 'geral') {
             renderGeral(data);
         } else if (data.tipo === 'individual') {
             renderIndividual(codigo, data);
@@ -104,15 +107,16 @@ function renderErro() {
 
 function renderGeral(data) {
     app.innerHTML = `
-        <div class="page-hero">
+        <div class="page-hero reveal">
             <p class="page-eyebrow">Creator Mobile</p>
             <h1 class="page-title">Valores dos serviços</h1>
         </div>
-        <section class="block">
+        <section class="block reveal">
             ${tabelaValoresHTML(data.valores)}
         </section>
         <div class="content-spacer"></div>
     `;
+    observeReveal();
 }
 
 /* ═══════════════════ CAMADA 3 — CÓDIGO INDIVIDUAL ═══════════════════ */
@@ -123,7 +127,7 @@ function renderIndividual(codigo, data) {
     const catalogo = data.catalogo || {};
 
     app.innerHTML = `
-        <div class="page-hero">
+        <div class="page-hero reveal">
             <p class="page-eyebrow">Creator Mobile · ${data.nome || ''}</p>
             <h1 class="page-title">Atualização de parceria</h1>
         </div>
@@ -131,7 +135,7 @@ function renderIndividual(codigo, data) {
         ${bloco(t.abertura)}
         ${bloco(t.comoFunciona, 'Como o trabalho funciona')}
 
-        <section class="block">
+        <section class="block reveal">
             <h2 class="block-title">Tabela de valores unitários</h2>
             ${tabelaValoresHTML(valores)}
         </section>
@@ -143,7 +147,7 @@ function renderIndividual(codigo, data) {
 
         ${bloco(t.extensaoAcademia, 'Extensão do modelo')}
 
-        <section class="block" id="catalogo-secao">
+        <section class="block reveal" id="catalogo-secao">
             <h2 class="block-title">Catálogo do mês${catalogo.mes ? ' — ' + catalogo.mes : ''}</h2>
             <p class="block-text" style="margin-bottom:20px;">
                 Marque os itens que fazem sentido para este mês. O valor total é somado
@@ -166,13 +170,14 @@ function renderIndividual(codigo, data) {
 
     renderCatalogoInterativo(valores, catalogo);
     document.getElementById('btn-confirmar').addEventListener('click', () => confirmarSelecao(codigo, catalogo));
+    observeReveal();
 }
 
 function bloco(texto, titulo) {
     if (!texto) return '';
     const paragrafos = texto.split('\n\n').map(p => `<p class="block-text">${p}</p>`).join('');
     return `
-        <section class="block">
+        <section class="block reveal">
             ${titulo ? `<h2 class="block-title">${titulo}</h2>` : ''}
             ${paragrafos}
         </section>
@@ -189,7 +194,7 @@ function simulacoesHTML(simulacoes) {
         </tr>
     `).join('');
     return `
-        <section class="block">
+        <section class="block reveal">
             <h2 class="block-title">Simulações ilustrativas</h2>
             <p class="block-text" style="margin-bottom:14px;">
                 Não existem pacotes fechados nem opções fixas para escolher. As simulações
