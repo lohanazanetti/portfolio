@@ -99,8 +99,8 @@ nav.site-nav {
     gap: 10px;
 }
 .nav-logo img {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
 }
 .nav-logo-text {
@@ -111,7 +111,7 @@ nav.site-nav {
     letter-spacing: 0.2em;
     text-transform: uppercase;
 }
-.nav-links { display: flex; gap: 22px; }
+.nav-links { display: flex; gap: 28px; }
 .nav-links a {
     font-family: var(--body);
     font-size: 0.75rem;
