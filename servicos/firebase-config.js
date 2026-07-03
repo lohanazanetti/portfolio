@@ -23,7 +23,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCH0Mh52hqTLl9jbYqukUTzkKFO6-XiqHQ",
+    apiKey: "AIzaSyCH0Mh52hqTll9jbYqukUTzkKFO6-XiqHQ",
     authDomain: "creator-mobile-servicos.firebaseapp.com",
     projectId: "creator-mobile-servicos",
     storageBucket: "creator-mobile-servicos.firebasestorage.app",
