@@ -5,7 +5,7 @@
    na primeira configuração do projeto. Depois disso, todo o
    conteúdo passa a ser editado direto pelo painel (Firestore),
    e este arquivo pode ficar como referência/backup do conteúdo
-   original combinado com a Roselia.
+   original combinado com a Farmácia Desconto Fácil.
 
    Para replicar para um novo cliente (Glaucia, Roque, Marcos...),
    NÃO edite este arquivo: use o botão "+ novo cliente" no painel
@@ -28,7 +28,7 @@ const SEED_DATA = {
 
     'roselia-x7k2m9': {
         tipo: 'individual',
-        nome: 'Roselia',
+        nome: 'Farmácia Desconto Fácil',
         valores: VALORES_PADRAO,
 
         textos: {

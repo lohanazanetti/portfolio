@@ -82,6 +82,46 @@ img { display: block; max-width: 100%; }
 }
 .top-bar .back-link:hover { color: var(--accent); border-color: var(--accent); }
 
+/* ═══════ NAV (mesmo cabeçalho/logo do portfólio principal) ═══════ */
+nav.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: rgba(31,8,34,0.93);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--accent08);
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+.nav-logo-text {
+    font-family: var(--caps);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 22px; }
+.nav-links a {
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--t3);
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+
 /* ═══════ HERO ═══════ */
 .page-hero {
     padding: 24px 24px 40px;
