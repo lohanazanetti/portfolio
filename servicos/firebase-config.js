@@ -23,12 +23,12 @@
    ═══════════════════════════════════════════════════════════════ */
 
 const firebaseConfig = {
-    apiKey: "COLE_AQUI_SUA_API_KEY",
-    authDomain: "COLE_AQUI.firebaseapp.com",
-    projectId: "COLE_AQUI_O_PROJECT_ID",
-    storageBucket: "COLE_AQUI.appspot.com",
-    messagingSenderId: "COLE_AQUI",
-    appId: "COLE_AQUI"
+    apiKey: "AIzaSyBz2BwlZm6r6zWwtgJXojA4y7LcKFT4QUw",
+    authDomain: "painel-central-creator.firebaseapp.com",
+    projectId: "painel-central-creator",
+    storageBucket: "painel-central-creator.firebasestorage.app",
+    messagingSenderId: "419602787902",
+    appId: "1:419602787902:web:aa9d565822f1bc09436b6f"
 };
 
 firebase.initializeApp(firebaseConfig);
