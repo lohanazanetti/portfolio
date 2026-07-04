@@ -337,6 +337,18 @@ section.block:first-of-type { border-top: none; }
     padding-left: 8px;
 }
 
+.catalogo-nota {
+    padding: 14px 16px;
+    background: var(--accent08);
+    border-radius: 14px;
+    margin-top: -2px;
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--t3);
+    font-style: italic;
+}
+
 /* bloco fixo (Stories Fotográficos) + avulso (Story Arte, com qty) */
 .catalogo-fixed {
     display: flex;

@@ -226,6 +226,8 @@ function renderCatalogoInterativo(codigo, categoria, valores, catalogo) {
     const carrosseis = catalogo.carrosseis || [];
     const posts = catalogo.posts || [];
 
+    const notas = catalogo.notas || {};
+
     const grupo = (titulo, itens, grupoCat, preco) => {
         if (!itens.length) return '';
         const itensHTML = itens.map((it, i) => `
@@ -238,10 +240,12 @@ function renderCatalogoInterativo(codigo, categoria, valores, catalogo) {
                 <div class="catalogo-item-price">${fmtReal(preco)}</div>
             </label>
         `).join('');
+        const notaHTML = notas[grupoCat] ? `<div class="catalogo-nota">${notas[grupoCat]}</div>` : '';
         return `
             <div class="catalogo-group">
                 <div class="catalogo-group-title">${titulo}</div>
                 ${itensHTML}
+                ${notaHTML}
             </div>
         `;
     };

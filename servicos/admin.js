@@ -121,6 +121,7 @@ function abrirEditor(data, codigo, novo) {
             const itens = catalogo[grupo] || [];
             itens.forEach(it => linhaCatalogo(categoria, grupo, it.titulo, it.roteiro));
         });
+        document.getElementById(`f-catalogo-nota-posts-${categoria}`).value = (catalogo.notas || {}).posts || '';
     });
 
     atualizarVisibilidadeTipo();
@@ -232,6 +233,8 @@ document.getElementById('btn-salvar-cliente').addEventListener('click', async ()
                     roteiro: row.querySelector('.c-roteiro').value.trim()
                 })).filter(it => it.titulo);
             });
+            const notaPosts = document.getElementById(`f-catalogo-nota-posts-${categoria}`).value.trim();
+            if (notaPosts) data.catalogos[categoria].notas = { posts: notaPosts };
         });
     }
 
