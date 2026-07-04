@@ -15,6 +15,11 @@ const auth = firebase.auth();
 
 let clienteAtualCodigo = null; // código sendo editado no momento (null = novo cliente)
 
+/* categorias do catálogo do mês — Farmácia/Vacinas usam um único CNPJ e
+   catálogo unificado, Academia tem CNPJ próprio e catálogo separado */
+const CATALOGO_CATEGORIAS = ['farmaciaVacinas', 'academia'];
+const CATALOGO_ROTULOS = { farmaciaVacinas: 'Farmácia / Vacinas', academia: 'Academia' };
+
 /* ═══════════════════ AUTENTICAÇÃO ═══════════════════ */
 
 auth.onAuthStateChanged(user => {
@@ -105,13 +110,18 @@ function abrirEditor(data, codigo, novo) {
     listaSim.innerHTML = '';
     (data.simulacoes || []).forEach(s => linhaSimulacao(s.composicao, s.valor));
 
-    // catálogo
-    document.getElementById('f-catalogo-mes').value = (data.catalogo && data.catalogo.mes) || '';
-    ['videos', 'carrosseis', 'posts'].forEach(grupo => {
-        const el = document.querySelector(`.lista-catalogo[data-grupo="${grupo}"]`);
-        el.innerHTML = '';
-        const itens = (data.catalogo && data.catalogo[grupo]) || [];
-        itens.forEach(it => linhaCatalogo(grupo, it.titulo, it.roteiro));
+    // catálogos (Farmácia/Vacinas e Academia, cada um com seu próprio mês e grupos)
+    const catalogos = data.catalogos || {};
+    CATALOGO_CATEGORIAS.forEach(categoria => {
+        const catalogo = catalogos[categoria] || {};
+        document.getElementById(`f-catalogo-mes-${categoria}`).value = catalogo.mes || '';
+        ['videos', 'carrosseis', 'posts'].forEach(grupo => {
+            const el = document.querySelector(`.lista-catalogo[data-categoria="${categoria}"][data-grupo="${grupo}"]`);
+            el.innerHTML = '';
+            const itens = catalogo[grupo] || [];
+            itens.forEach(it => linhaCatalogo(categoria, grupo, it.titulo, it.roteiro));
+        });
+        document.getElementById(`f-catalogo-nota-posts-${categoria}`).value = (catalogo.notas || {}).posts || '';
     });
 
     atualizarVisibilidadeTipo();
@@ -166,8 +176,8 @@ function linhaSimulacao(composicao = '', valor = '') {
 }
 document.getElementById('btn-add-sim').addEventListener('click', () => linhaSimulacao());
 
-function linhaCatalogo(grupo, titulo = '', roteiro = '') {
-    const container = document.querySelector(`.lista-catalogo[data-grupo="${grupo}"]`);
+function linhaCatalogo(categoria, grupo, titulo = '', roteiro = '') {
+    const container = document.querySelector(`.lista-catalogo[data-categoria="${categoria}"][data-grupo="${grupo}"]`);
     linhaGenerica(container, `
         <div style="flex:1;">
             <input type="text" class="admin-input c-titulo" placeholder="Título" value="${(titulo || '').replace(/"/g, '&quot;')}">
@@ -176,7 +186,7 @@ function linhaCatalogo(grupo, titulo = '', roteiro = '') {
     `);
 }
 document.querySelectorAll('[data-add-catalogo]').forEach(btn => {
-    btn.addEventListener('click', () => linhaCatalogo(btn.dataset.addCatalogo));
+    btn.addEventListener('click', () => linhaCatalogo(btn.dataset.categoria, btn.dataset.grupo));
 });
 
 /* ═══════════════════ SALVAR CLIENTE ═══════════════════ */
@@ -213,13 +223,18 @@ document.getElementById('btn-salvar-cliente').addEventListener('click', async ()
             valor: Number(row.querySelector('.s-valor').value) || 0
         })).filter(s => s.composicao);
 
-        data.catalogo = { mes: document.getElementById('f-catalogo-mes').value.trim() };
-        ['videos', 'carrosseis', 'posts'].forEach(grupo => {
-            const rows = document.querySelectorAll(`.lista-catalogo[data-grupo="${grupo}"] .admin-row`);
-            data.catalogo[grupo] = Array.from(rows).map(row => ({
-                titulo: row.querySelector('.c-titulo').value.trim(),
-                roteiro: row.querySelector('.c-roteiro').value.trim()
-            })).filter(it => it.titulo);
+        data.catalogos = {};
+        CATALOGO_CATEGORIAS.forEach(categoria => {
+            data.catalogos[categoria] = { mes: document.getElementById(`f-catalogo-mes-${categoria}`).value.trim() };
+            ['videos', 'carrosseis', 'posts'].forEach(grupo => {
+                const rows = document.querySelectorAll(`.lista-catalogo[data-categoria="${categoria}"][data-grupo="${grupo}"] .admin-row`);
+                data.catalogos[categoria][grupo] = Array.from(rows).map(row => ({
+                    titulo: row.querySelector('.c-titulo').value.trim(),
+                    roteiro: row.querySelector('.c-roteiro').value.trim()
+                })).filter(it => it.titulo);
+            });
+            const notaPosts = document.getElementById(`f-catalogo-nota-posts-${categoria}`).value.trim();
+            if (notaPosts) data.catalogos[categoria].notas = { posts: notaPosts };
         });
     }
 
@@ -249,9 +264,13 @@ async function carregarRespostas(codigo) {
     }
     container.innerHTML = snap.docs.map(doc => {
         const d = doc.data();
+        const categoriaLabel = CATALOGO_ROTULOS[d.categoria] || 'categoria não informada';
         return `
             <div style="background:var(--bg-2);border-radius:12px;padding:14px;margin-bottom:10px;">
-                <strong style="color:var(--white);">${d.mes || doc.id}</strong> — <span style="color:var(--accent);">${d.total || ''}</span>
+                <span class="admin-cliente-badge">${categoriaLabel}</span>
+                <div style="margin-top:8px;">
+                    <strong style="color:var(--white);">${d.mes || doc.id}</strong> — <span style="color:var(--accent);">${d.total || ''}</span>
+                </div>
                 <ul style="margin-top:8px;padding-left:18px;">
                     ${(d.itens || []).map(i => `<li>${i}</li>`).join('')}
                 </ul>

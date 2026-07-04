@@ -227,6 +227,46 @@ section.block:first-of-type { border-top: none; }
 }
 .sim-table td:last-child { color: var(--white); font-weight: 500; text-align: right; white-space: nowrap; }
 
+/* ═══════ ABAS DO CATÁLOGO (Farmácia/Vacinas × Academia) ═══════ */
+.tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.tab-btn {
+    font-family: var(--caps);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--t3);
+    background: var(--bg-2);
+    border: 1px solid var(--accent25);
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.25s, background 0.25s, border-color 0.25s;
+}
+.tab-btn:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+.tab-btn.active {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+.tab-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.tab-btn-nota {
+    font-family: var(--body);
+    font-size: 0.62rem;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--t3);
+    margin-left: 6px;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
 /* ═══════ CATÁLOGO INTERATIVO ═══════ */
 .catalogo-group { margin-bottom: 28px; }
 .catalogo-group-title {
@@ -295,6 +335,18 @@ section.block:first-of-type { border-top: none; }
     white-space: nowrap;
     margin-left: auto;
     padding-left: 8px;
+}
+
+.catalogo-nota {
+    padding: 14px 16px;
+    background: var(--accent08);
+    border-radius: 14px;
+    margin-top: -2px;
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--t3);
+    font-style: italic;
 }
 
 /* bloco fixo (Stories Fotográficos) + avulso (Story Arte, com qty) */

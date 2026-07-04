@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#1F0822">
+    <title>Catálogo do mês | Lohana Zanetti</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase (SDK compat, sem necessidade de bundler) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="https://lohanazanetti.github.io/portfolio/" class="nav-logo">
+            <img src="../logo.png" alt="Logo Lohana Zanetti">
+            <span class="nav-logo-text">Creator Mobile</span>
+        </a>
+        <div class="nav-links">
+            <a href="publico.html">como funciona</a>
+        </div>
+    </nav>
+
+    <!-- Todo o conteúdo desta página é montado dinamicamente pelo catalogo.js,
+         a partir do mesmo documento do Firestore (clientes/{codigo}) usado
+         pelo index.html?c=CODIGO. -->
+    <div id="app">
+        <div class="state-screen">
+            <h1 class="page-title">Carregando…</h1>
+        </div>
+    </div>
+
+    <script src="reveal.js"></script>
+    <script src="catalogo.js"></script>
+</body>
+</html>
