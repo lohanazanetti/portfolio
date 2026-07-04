@@ -142,6 +142,12 @@ function renderCatalogoPagina(codigo, data) {
             const cat = btn.dataset.tab;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.dataset.painel === cat));
+
+            /* o painel muda de display:none pra block via clique, não via scroll —
+               o IntersectionObserver do reveal.js não recalcula nesse instante, então
+               revelamos o conteúdo desse painel na hora, sem esperar o usuário rolar */
+            const painelAtivo = document.querySelector(`.tab-panel[data-painel="${cat}"]`);
+            painelAtivo.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
         });
     });
 
