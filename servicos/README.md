@@ -4,7 +4,7 @@ Site estático (GitHub Pages) com backend leve em Firebase Firestore, com três 
 
 1. **Pública** (`publico.html`) — explica o modelo de trabalho, sem valores. Link fixo, sem Firebase.
 2. **Geral** (`index.html?c=geral`) — mostra só a tabela de valores padrão.
-3. **Individual** (`index.html?c=CODIGO-DO-CLIENTE`) — conteúdo completo personalizado + tabela de valores + catálogo do mês interativo, com soma automática e envio da seleção.
+3. **Individual** (`index.html?c=CODIGO-DO-CLIENTE`) — conteúdo completo personalizado + tabela de valores, com um link para o catálogo interativo do mês (`catalogo.html?c=CODIGO-DO-CLIENTE`), que traz as abas Farmácia/Vacinas e Academia com soma automática e envio da seleção de cada uma, de forma independente.
 
 URL real publicada: `lohanazanetti.github.io/portfolio/servicos/` — como este projeto vive dentro do repositório `portfolio` (e não em um repositório próprio chamado `lohanazanetti.github.io`), o GitHub Pages publica tudo sob o prefixo `/portfolio/`. Os links internos do site (botão do portfólio, link de acesso gerado no painel admin) já usam caminhos relativos e funcionam corretamente com esse prefixo.
 
@@ -14,7 +14,8 @@ URL real publicada: `lohanazanetti.github.io/portfolio/servicos/` — como este 
 |---|---|
 | `publico.html` | Camada 1 — texto fixo, sem Firebase |
 | `index.html` + `app.js` | Roteador das Camadas 2 e 3 — lê `?c=` e busca o cliente no Firestore |
-| `admin.html` + `admin.js` + `admin.css` | Painel administrativo (login da Lohana) para cadastrar clientes, valores, textos e catálogo do mês |
+| `catalogo.html` + `catalogo.js` | Catálogo interativo do mês (Camada 3), aberto a partir do link em `index.html` — abas Farmácia/Vacinas e Academia, cada uma com sua seleção, total e confirmação |
+| `admin.html` + `admin.js` + `admin.css` | Painel administrativo (login da Lohana) para cadastrar clientes, valores, textos e os dois catálogos do mês (Farmácia/Vacinas e Academia) |
 | `seed-data.js` | Conteúdo de exemplo (código `geral` + `descontofacil-x7k2m9`), usado só no botão "Importar dados de exemplo" do admin |
 | `firebase-config.js` | Credenciais do projeto Firebase — **precisa ser preenchido** (veja comentários no arquivo) |
 | `firestore.rules` | Regras de segurança do Firestore — cole no console do Firebase |
@@ -39,7 +40,7 @@ Tudo pelo painel `admin.html`, sem mexer em código:
 4. Clique em **"Salvar cliente"**.
 5. O link de acesso aparece logo abaixo do botão salvar — envie esse link para o cliente (por WhatsApp, por exemplo).
 
-Todo mês, para atualizar o catálogo: abra o cliente no painel, edite os itens de Vídeos/Carrosséis/Posts (ou o rótulo do mês) e salve de novo. O código de acesso do cliente não muda.
+Todo mês, para atualizar o catálogo: abra o cliente no painel, edite os itens de Vídeos/Carrosséis/Posts (ou o rótulo do mês) do bloco Farmácia/Vacinas e/ou do bloco Academia, e salve de novo. O código de acesso do cliente não muda.
 
 ## Onde consultar o que o cliente escolheu
 

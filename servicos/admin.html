@@ -82,24 +82,44 @@
                 <div id="lista-simulacoes"></div>
                 <button class="btn-outline admin-add-btn" id="btn-add-sim">+ simulação</button>
 
-                <h3 class="admin-subtitle">Catálogo do mês</h3>
+                <h3 class="admin-subtitle">Catálogo do mês — Farmácia / Vacinas</h3>
                 <label class="admin-label">Rótulo do mês (ex: Julho 2026)</label>
-                <input type="text" id="f-catalogo-mes" class="admin-input">
+                <input type="text" id="f-catalogo-mes-farmaciaVacinas" class="admin-input">
 
-                <div class="admin-catalogo-grupo" data-grupo="videos">
+                <div class="admin-catalogo-grupo" data-categoria="farmaciaVacinas" data-grupo="videos">
                     <h4 class="admin-group-title">Vídeos (R$100/un.)</h4>
-                    <div class="lista-catalogo" data-grupo="videos"></div>
-                    <button class="btn-outline admin-add-btn" data-add-catalogo="videos">+ vídeo</button>
+                    <div class="lista-catalogo" data-categoria="farmaciaVacinas" data-grupo="videos"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo data-categoria="farmaciaVacinas" data-grupo="videos">+ vídeo</button>
                 </div>
-                <div class="admin-catalogo-grupo" data-grupo="carrosseis">
+                <div class="admin-catalogo-grupo" data-categoria="farmaciaVacinas" data-grupo="carrosseis">
                     <h4 class="admin-group-title">Carrosséis (R$65/un.)</h4>
-                    <div class="lista-catalogo" data-grupo="carrosseis"></div>
-                    <button class="btn-outline admin-add-btn" data-add-catalogo="carrosseis">+ carrossel</button>
+                    <div class="lista-catalogo" data-categoria="farmaciaVacinas" data-grupo="carrosseis"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo data-categoria="farmaciaVacinas" data-grupo="carrosseis">+ carrossel</button>
                 </div>
-                <div class="admin-catalogo-grupo" data-grupo="posts">
+                <div class="admin-catalogo-grupo" data-categoria="farmaciaVacinas" data-grupo="posts">
                     <h4 class="admin-group-title">Posts estáticos (R$35/un.)</h4>
-                    <div class="lista-catalogo" data-grupo="posts"></div>
-                    <button class="btn-outline admin-add-btn" data-add-catalogo="posts">+ post</button>
+                    <div class="lista-catalogo" data-categoria="farmaciaVacinas" data-grupo="posts"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo data-categoria="farmaciaVacinas" data-grupo="posts">+ post</button>
+                </div>
+
+                <h3 class="admin-subtitle">Catálogo do mês — Academia</h3>
+                <label class="admin-label">Rótulo do mês (ex: Julho 2026)</label>
+                <input type="text" id="f-catalogo-mes-academia" class="admin-input">
+
+                <div class="admin-catalogo-grupo" data-categoria="academia" data-grupo="videos">
+                    <h4 class="admin-group-title">Vídeos (R$100/un.)</h4>
+                    <div class="lista-catalogo" data-categoria="academia" data-grupo="videos"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo data-categoria="academia" data-grupo="videos">+ vídeo</button>
+                </div>
+                <div class="admin-catalogo-grupo" data-categoria="academia" data-grupo="carrosseis">
+                    <h4 class="admin-group-title">Carrosséis (R$65/un.)</h4>
+                    <div class="lista-catalogo" data-categoria="academia" data-grupo="carrosseis"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo data-categoria="academia" data-grupo="carrosseis">+ carrossel</button>
+                </div>
+                <div class="admin-catalogo-grupo" data-categoria="academia" data-grupo="posts">
+                    <h4 class="admin-group-title">Posts estáticos (R$35/un.)</h4>
+                    <div class="lista-catalogo" data-categoria="academia" data-grupo="posts"></div>
+                    <button class="btn-outline admin-add-btn" data-add-catalogo data-categoria="academia" data-grupo="posts">+ post</button>
                 </div>
             </div>
 
