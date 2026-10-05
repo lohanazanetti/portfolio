@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#1F0822">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Proposta de conteúdo para o Lumina Studio | Creator Mobile</title>
+    <meta name="description" content="Proposta de conteúdo para Instagram: Reels, carrosséis e posts, com captações no salão.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos exclusivos desta proposta. O style.css compartilhado não é alterado. */
+
+        /* ═══════ INCLUSO NO PACOTE ═══════ */
+        .include-list { list-style: none; margin-top: 6px; }
+        .include-list li {
+            position: relative;
+            padding: 12px 0 12px 26px;
+            border-top: 1px solid var(--accent10);
+            font-size: 0.88rem;
+            font-weight: 300;
+            color: var(--t2);
+            line-height: 1.7;
+        }
+        .include-list li:first-child { border-top: none; }
+        .include-list li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 21px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .include-list strong { color: var(--white); font-weight: 500; }
+
+        /* ═══════ INVESTIMENTO ═══════ */
+        .price-card {
+            background: var(--bg-2);
+            border: 1px solid var(--accent25);
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            margin: 8px 0 22px;
+        }
+        .price-label {
+            font-family: var(--caps);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .price-value {
+            font-family: var(--display);
+            font-size: clamp(2.6rem, 10vw, 3.6rem);
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.1;
+        }
+        .price-value small {
+            font-family: var(--body);
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--t3);
+        }
+        .price-note { font-size: 0.8rem; color: var(--t3); margin-top: 6px; }
+        .pill-save {
+            display: inline-block;
+            font-family: var(--caps);
+            font-size: 0.66rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent10);
+            border: 1px solid var(--accent25);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-top: 16px;
+        }
+        .comp-caption {
+            font-family: var(--caps);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--t3);
+            margin: 22px 0 10px;
+        }
+        .comp-table td:not(:first-child),
+        .comp-table th:not(:first-child) { text-align: right; }
+        .comp-table tfoot td {
+            border-top: 1px solid var(--accent25);
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        /* ═══════ CRONOGRAMA EM CARDS ═══════ */
+        .week { margin-top: 30px; }
+        .week-label {
+            font-family: var(--caps);
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .week-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        .idea-card {
+            background: var(--bg-2);
+            border: 1px solid transparent;
+            border-radius: 16px;
+            padding: 20px 18px;
+        }
+        .idea-tag {
+            display: inline-block;
+            font-family: var(--caps);
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--bg);
+            background: var(--accent);
+            padding: 3px 12px;
+            border-radius: 100px;
+            margin-bottom: 12px;
+        }
+        .idea-tag.feed { color: var(--accent); background: var(--accent15); }
+        .idea-title {
+            font-family: var(--display);
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 10px;
+        }
+        .idea-list { list-style: none; margin-bottom: 12px; }
+        .idea-list li {
+            position: relative;
+            padding-left: 16px;
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: var(--t2);
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+        .idea-list li::before {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 0.72em;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.6;
+        }
+        .idea-why {
+            font-size: 0.76rem;
+            color: var(--t3);
+            font-style: italic;
+            line-height: 1.65;
+            border-top: 1px solid var(--accent10);
+            padding-top: 10px;
+        }
+        @media (min-width: 640px) {
+            .week-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ═══════ ROTINA ═══════ */
+        .steps { list-style: none; counter-reset: step; margin-top: 6px; }
+        .steps li {
+            counter-increment: step;
+            position: relative;
+            padding: 16px 0 16px 48px;
+            border-top: 1px solid var(--accent10);
+        }
+        .steps li:first-child { border-top: none; }
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent15);
+            color: var(--accent);
+            font-family: var(--caps);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step-title { font-size: 0.9rem; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+
+        .foot-note {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 8px 24px 0;
+            text-align: center;
+            font-family: var(--caps);
+            font-size: 0.62rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--t3);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="https://lohanazanetti.github.io/portfolio/" class="nav-logo">
+            <img src="../logo.png" alt="Logo Lohana Zanetti">
+            <span class="nav-logo-text">Creator Mobile</span>
+        </a>
+        <div class="nav-links">
+            <a href="https://lohanazanetti.github.io/portfolio/">ver portfólio →</a>
+        </div>
+    </nav>
+
+    <div class="page-hero reveal">
+        <p class="page-eyebrow">Proposta de conteúdo</p>
+        <h1 class="page-title">Instagram do Lumina Studio</h1>
+        <p class="page-lede">
+            Um plano mensal de Reels, carrosséis e posts que mostram o trabalho do
+            Lumina Studio, do cabelo à unha, com captações feitas direto no seu espaço.
+        </p>
+    </div>
+
+    <section class="block reveal">
+        <h2 class="block-title">O que está incluso em cada mês</h2>
+        <ul class="include-list">
+            <li><strong>4 Reels</strong>, um por semana, mostrando procedimentos e o dia a dia do salão</li>
+            <li><strong>2 carrosséis e 2 posts estáticos</strong>, com temas sugeridos por mim e alinhados com você</li>
+            <li><strong>Captações presenciais no salão</strong> (até 2 por mês), em dias combinados com você</li>
+            <li><strong>Planejamento das ideias</strong> e um roteiro curto para cada vídeo</li>
+            <li><strong>Edição e finalização</strong> de cada peça, pronta para publicar</li>
+        </ul>
+    </section>
+
+    <section class="block reveal">
+        <h2 class="block-title">Investimento</h2>
+        <div class="price-card">
+            <p class="price-label">Pacote mensal</p>
+            <p class="price-value">R$ 500,00 <small>/ mês</small></p>
+            <p class="price-note">8 conteúdos por mês, com as captações presenciais incluídas</p>
+            <span class="pill-save">Economia de R$ 100,00 por mês</span>
+        </div>
+
+        <p class="block-text">
+            Para comparar, veja quanto o mesmo conjunto de peças custaria contratado
+            separadamente, pela tabela de valores unitários da Creator Mobile.
+        </p>
+
+        <p class="comp-caption">Mesmas peças contratadas avulsas</p>
+        <table class="valores-table comp-table">
+            <thead>
+                <tr><th>Item</th><th>Qtd.</th><th>Unitário</th><th>Subtotal</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Reel</td><td>4</td><td>R$ 100,00</td><td>R$ 400,00</td></tr>
+                <tr><td>Carrossel</td><td>2</td><td>R$ 65,00</td><td>R$ 130,00</td></tr>
+                <tr><td>Post estático</td><td>2</td><td>R$ 35,00</td><td>R$ 70,00</td></tr>
+            </tbody>
+            <tfoot>
+                <tr><td>Total avulso</td><td>8</td><td></td><td>R$ 600,00</td></tr>
+                <tr><td>Pacote mensal</td><td>8</td><td></td><td>R$ 500,00</td></tr>
+            </tfoot>
+        </table>
+
+        <p class="block-text" style="margin-top:16px;">
+            No pacote, você paga R$ 100,00 a menos e ainda conta com as captações no salão.
+            Se quiser incluir algo além do combinado, como Story Arte (R$ 30,00 por
+            unidade), é só me dizer.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2 class="block-title">Cronograma de ideias do primeiro mês</h2>
+        <p class="block-text">
+            Um ponto de partida para o primeiro mês. As ideias podem se ajustar conforme
+            a agenda do salão e os procedimentos que estiverem marcados.
+        </p>
+
+        <div class="week reveal">
+            <p class="week-label">Semana 1</p>
+            <div class="week-grid">
+                <article class="idea-card">
+                    <span class="idea-tag">Reel</span>
+                    <h3 class="idea-title">O salão por dentro</h3>
+                    <ul class="idea-list">
+                        <li>Entrada e fachada, seguidas de um passeio pelas áreas de cabelo e unha</li>
+                        <li>Planos curtos de detalhes: bancada, produtos, mãos trabalhando</li>
+                        <li>Fecha com o endereço e o convite para agendar pelo WhatsApp</li>
+                    </ul>
+                    <p class="idea-why">Apresenta o espaço e gera confiança antes da primeira visita.</p>
+                </article>
+                <article class="idea-card">
+                    <span class="idea-tag feed">Post estático</span>
+                    <h3 class="idea-title">Serviços e como agendar</h3>
+                    <ul class="idea-list">
+                        <li>Arte com os principais serviços de cabelo e unha</li>
+                        <li>Identidade visual do salão e chamada para o WhatsApp</li>
+                    </ul>
+                    <p class="idea-why">Dá um caminho claro de agendamento para quem chegar pelo Reel.</p>
+                </article>
+            </div>
+        </div>
+
+        <div class="week reveal">
+            <p class="week-label">Semana 2</p>
+            <div class="week-grid">
+                <article class="idea-card">
+                    <span class="idea-tag">Reel</span>
+                    <h3 class="idea-title">Transformação de loiro</h3>
+                    <ul class="idea-list">
+                        <li>O cabelo de partida, antes de qualquer processo</li>
+                        <li>Etapas em time-lapse, da descoloração à tonalização</li>
+                        <li>Resultado final com movimento e a reação da cliente</li>
+                    </ul>
+                    <p class="idea-why">Transformações de cor estão entre os formatos de salão com melhor desempenho, e o loiro é um serviço de alto valor.</p>
+                </article>
+                <article class="idea-card">
+                    <span class="idea-tag feed">Carrossel</span>
+                    <h3 class="idea-title">Guia do loiro: o que pedir no salão</h3>
+                    <ul class="idea-list">
+                        <li>Tons possíveis e para quem cada um funciona</li>
+                        <li>Tempo e cuidados do processo, em linguagem simples</li>
+                        <li>Último slide com convite para uma avaliação</li>
+                    </ul>
+                    <p class="idea-why">Conteúdo para salvar e compartilhar, que posiciona o salão como referência no assunto.</p>
+                </article>
+            </div>
+        </div>
+
+        <div class="week reveal">
+            <p class="week-label">Semana 3</p>
+            <div class="week-grid">
+                <article class="idea-card">
+                    <span class="idea-tag">Reel</span>
+                    <h3 class="idea-title">Unha em close</h3>
+                    <ul class="idea-list">
+                        <li>Mão antes, seguida do processo filmado bem de perto</li>
+                        <li>Corte seco para o resultado, com giro da mão sob boa luz</li>
+                        <li>Sem narração, com música e texto curto na tela</li>
+                    </ul>
+                    <p class="idea-why">Em poucos segundos mostra acabamento e capricho.</p>
+                </article>
+                <article class="idea-card">
+                    <span class="idea-tag feed">Carrossel</span>
+                    <h3 class="idea-title">Formatos de unha: qual combina com você</h3>
+                    <ul class="idea-list">
+                        <li>Um formato por slide (redonda, quadrada, amendoada, entre outros)</li>
+                        <li>Para quem cada um é indicado, com foto de trabalho real</li>
+                        <li>Fecha com o convite para agendar</li>
+                    </ul>
+                    <p class="idea-why">Ajuda a cliente a decidir e a chegar sabendo o que pedir no atendimento.</p>
+                </article>
+            </div>
+        </div>
+
+        <div class="week reveal">
+            <p class="week-label">Semana 4</p>
+            <div class="week-grid">
+                <article class="idea-card">
+                    <span class="idea-tag">Reel</span>
+                    <h3 class="idea-title">Corte com mudança de visual</h3>
+                    <ul class="idea-list">
+                        <li>O antes, com a câmera parada em um ponto fixo</li>
+                        <li>Momentos-chave do corte</li>
+                        <li>O depois, no mesmo enquadramento, com a reação da cliente</li>
+                    </ul>
+                    <p class="idea-why">O mesmo ângulo no antes e no depois deixa a mudança clara e valoriza a técnica.</p>
+                </article>
+                <article class="idea-card">
+                    <span class="idea-tag feed">Post estático</span>
+                    <h3 class="idea-title">Trabalho do mês</h3>
+                    <ul class="idea-list">
+                        <li>Foto de destaque de um resultado real, com autorização da cliente</li>
+                        <li>Nome do serviço na legenda e convite para agendar</li>
+                    </ul>
+                    <p class="idea-why">Prova o trabalho e mantém resultados reais em primeiro plano no perfil.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="block reveal">
+        <h2 class="block-title">Como funciona a rotina</h2>
+        <ol class="steps">
+            <li>
+                <p class="step-title">Alinhamento pelo WhatsApp</p>
+                <p class="block-text">
+                    A cada mês a gente combina o que vem pela frente. Se você tiver um dia com
+                    uma cliente marcada para um procedimento interessante, como um loiro ou uma
+                    transformação de corte, me avisa e eu organizo a captação.
+                </p>
+            </li>
+            <li>
+                <p class="step-title">Captação no salão</p>
+                <p class="block-text">
+                    Eu vou até o salão no dia combinado e faço as gravações. Quando a minha
+                    agenda permitir e houver clientes no salão, também posso passar em outros
+                    horários para gravar material extra. Para as gravações com clientes,
+                    combinamos a autorização de imagem.
+                </p>
+            </li>
+            <li>
+                <p class="step-title">Temas dos carrosséis e posts</p>
+                <p class="block-text">
+                    Eu sugiro os temas. Se você tiver algum assunto específico que queira ver
+                    no perfil, é só me dizer e a gente alinha juntas.
+                </p>
+            </li>
+            <li>
+                <p class="step-title">Ajustes sem burocracia</p>
+                <p class="block-text">
+                    Tudo é conversado direto pelo WhatsApp, sem processo longo. O plano do mês
+                    seguinte parte do que funcionou e do que estiver na agenda do salão.
+                </p>
+            </li>
+        </ol>
+    </section>
+
+    <section class="block reveal" style="text-align:center;">
+        <h2 class="block-title">Vamos começar?</h2>
+        <p class="block-text" style="margin-bottom:24px;">
+            Se fizer sentido para você, é só chamar no WhatsApp que a gente alinha as datas
+            das primeiras captações.
+        </p>
+        <a href="https://wa.me/5549888742812" target="_blank" rel="noopener" class="btn-primary">falar no whatsapp</a>
+    </section>
+
+    <p class="foot-note">Creator Mobile · Lohana Zanetti</p>
+
+    <script src="reveal.js"></script>
+</body>
+</html>
